@@ -3,158 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat & Earn</title>
+<title>WhatsApp Profile</title>
 
 <style>
+:root{
+--wa-green:#25D366;
+--wa-dark:#075E54;
+--wa-bg:#ECE5DD;
+--wa-light:#ffffff;
+--wa-text:#111B21;
+--wa-muted:#667781;
+}
+
+*{box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#000;
-  color:#fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  text-align:center;
+margin:0;
+font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+background:var(--wa-bg);
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
 }
 
-.container{
-  width:94%;
-  max-width:400px;
-  background:#121212;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 10px 35px rgba(0,0,0,0.7);
-  position:relative;
+/* Header */
+.header{
+position:fixed;
+top:0;
+width:100%;
+background:var(--wa-dark);
+color:white;
+padding:14px;
+text-align:center;
+font-weight:600;
+font-size:18px;
 }
 
-.notification{
-  position:absolute;
-  top:15px;
-  left:50%;
-  transform:translateX(-50%);
-  background:linear-gradient(90deg,#ff0050,#ff6ec7);
-  padding:10px 16px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:bold;
-  opacity:0;
-  transition:0.3s;
+/* Card */
+.card{
+margin-top:80px;
+width:min(420px,95%);
+background:var(--wa-light);
+border-radius:14px;
+padding:25px 20px;
+box-shadow:0 2px 6px rgba(0,0,0,.1);
+text-align:center;
 }
 
-.notification.show{
-  opacity:1;
+/* Profile Photo */
+.profile{
+width:120px;
+height:120px;
+margin:0 auto 15px;
+border-radius:50%;
+overflow:hidden;
+border:4px solid var(--wa-green);
+}
+.profile img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-h1{
-  font-size:24px;
-  margin-top:45px;
-  margin-bottom:12px;
+/* Name */
+.name{
+font-size:20px;
+font-weight:600;
+color:var(--wa-text);
+margin-bottom:6px;
 }
 
-p{
-  font-size:15px;
-  line-height:1.5;
-  color:#ccc;
+/* Status */
+.status{
+color:var(--wa-green);
+font-size:14px;
+font-weight:500;
+margin-bottom:20px;
 }
 
-.live{
-  font-size:14px;
-  color:#00f2ea;
-  margin-top:10px;
+/* About */
+.about{
+font-size:14px;
+color:var(--wa-muted);
+margin-bottom:20px;
 }
 
-.timer{
-  font-size:16px;
-  color:#ff3b5c;
-  font-weight:bold;
-  margin-top:8px;
+/* Button */
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+background:var(--wa-green);
+color:white;
 }
 
-button{
-  margin-top:22px;
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:12px;
-  font-size:17px;
-  font-weight:bold;
-  background:linear-gradient(90deg,#ff0050,#ff6ec7);
-  color:#fff;
-  cursor:pointer;
+footer{
+margin-top:20px;
+font-size:12px;
+color:var(--wa-muted);
 }
-
-button:hover{
-  opacity:0.9;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div id="popup" class="notification"></div>
-
-<h1>Are you over 15?</h1>
-
-<p>People in <strong>Zimbabwe</strong> are chatting with foreign friends and earning extra money online. Click the button below and follow the instructions to set up your chat profile—it only takes 1 minute!</p>
-
-<div class="live">🔥 <span id="users">127</span> people are chatting now</div>
-
-<div class="timer">⏳ Spots closing in <span id="countdown">02:00</span></div>
-
-<button onclick="goOffer()">CONTINUE</button>
-
+<div class="header">
+  WhatsApp Profile
 </div>
 
-<script>
-const OFFER="https://ln.run/Kro_f";
+<div class="card">
 
-/* redirect directly */
-function goOffer(){
-  window.location.href = OFFER;
-}
+  <div class="profile">
+    <!-- CHANGE THIS IMAGE TO YOUR OWN -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKCrC6Z_hynBjH0V5JdB_IWnEur-f1YZB2IqRrcfaXkq1InwP74htUYOXj-NVJ3kXnCE3X20EbdC-9me89TrXazWI7yPeFipVwdzzKReSDP0c_Z54FMciiH3hLzYb-qEhaHtXU23B0zy05LVdiO0Q8XaeTt8a4Ij3VJfvE_GVysLCAFv-VTZAdvQ8Frg_c/s624/Screenshot%202026-03-10%20093740.png" alt="Profile Photo">
+  </div>
 
-/* fake live user counter */
-setInterval(()=>{
-  let n=document.getElementById("users");
-  let current=parseInt(n.innerText);
-  let change=Math.floor(Math.random()*5);
-  n.innerText=current+change;
-},3000);
+  <div class="name">Janet Williams</div>
 
-/* countdown timer */
-let time=120;
-setInterval(()=>{
-  time--;
-  let m=Math.floor(time/60);
-  let s=time%60;
-  s = s<10?"0"+s:s;
-  document.getElementById("countdown").innerText = (m<10?"0"+m:m)+":"+s;
-  if(time<=0) time=120;
-},1000);
+  <div class="status">● Online</div>
 
-/* top notifications */
-const messages=[
-  "Tariro just earned $42 chatting",
-  "Nyasha received $25 today",
-  "Tanaka joined 1 minute ago",
-  "Kudakwashe started chatting",
-  "Rudo earned $31 today"
-];
+  <div class="about">
+    Hello 👋 I'm available to chat. Click below to message me directly on WhatsApp.
+  </div>
 
-let i=0;
-setInterval(()=>{
-  let popup=document.getElementById("popup");
-  popup.innerText=messages[i%messages.length];
-  popup.classList.add("show");
-  setTimeout(()=>{popup.classList.remove("show");},3000);
-  i++;
-},5000);
+  <button class="btn" onclick="window.location.href='https://ln.run/Kro_f'">
+    Chat on WhatsApp
+  </button>
 
-</script>
+  <footer>
+    © 2026 WhatsApp Profile Landing
+  </footer>
+
+</div>
 
 </body>
 </html>
