@@ -1,258 +1,109 @@
-<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WhatsApp Profile</title>
+<title>Chat & Earn Ghana</title>
 
 <style>
-:root{
---wa-green:#25D366;
---wa-dark:#075E54;
---wa-bg:#ECE5DD;
---wa-light:#ffffff;
---wa-text:#111B21;
---wa-muted:#667781;
-}
-
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
-background:var(--wa-bg);
-display:flex;
-align-items:center;
-justify-content:center;
-min-height:100vh;
-}
-
-/* Header */
-.header{
-position:fixed;
-top:0;
-width:100%;
-background:var(--wa-dark);
-color:white;
-padding:14px;
-text-align:center;
-font-weight:600;
-font-size:18px;
-}
-
-/* Card */
-.card{
-margin-top:80px;
-width:min(420px,95%);
-background:var(--wa-light);
-border-radius:14px;
-padding:25px 20px;
-box-shadow:0 2px 6px rgba(0,0,0,.1);
-text-align:center;
-}
-
-/* Profile Photo */
-.profile{
-width:120px;
-height:120px;
-margin:0 auto 15px;
-border-radius:50%;
-overflow:hidden;
-border:4px solid var(--wa-green);
-}
-.profile img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* Name */
-.name{
-font-size:20px;
-font-weight:600;
-color:var(--wa-text);
-margin-bottom:6px;
-}
-
-/* Status */
-.status{
-color:var(--wa-green);
-font-size:14px;
-font-weight:500;
-margin-bottom:20px;
-}
-
-/* About */
-.about{
-font-size:14px;
-color:var(--wa-muted);
-margin-bottom:20px;
-}
-
-/* Button */
-.btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:600;
-cursor:pointer;
-background:var(--wa-green);
-color:white;
-}
-
-footer{
-margin-top:20px;
-font-size:12px;
-color:var(--wa-muted);
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  CHAT HUB USA
-</div>
-
-<div class="card">
-
-  <div class="profile">
-   
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim43T2Upe5I9JpXQnG6ObL7mE7W5kCgm8HqRjEZkLZYRryxZG_ExQzKRbFgCLRQsVOIRZmVuG-2MCYfxUV90blgtL6SH1PAbmWdRonNhOr3DZ1GP9ZepMNVtB4ysZ0byTATowxmPDAUvkLAhGct8eujzlVFPsytbjtT8UHbJq4IBBYCiF3mWsFRPKtQgA/s751/From%20Main%20Klickpin%20CF-%20Uploaded%20by%20user%20-%207wh25clRX.jpg" alt="Profile Photo">
-  </div>
-
-  <div class="name">Janet Williams</div>
-
-  <div class="status">● Online</div>
-
-  <div class="about">
-   Hi 👋 I'm very bored and lonely, and I'm available to chat right now. Click the sign-up button below to register or download the app so you can message me directly through it. I will pay you weekly for our chats.
-  </div>
-
-  <button class="btn" onclick="window.location.href='https://ln.run/Kro_f'">
-    REGISTER
-  </button>
-
-  <footer>
-    © 2026 WhatsApp profile page
-  </footer>
-
-</div>
-
-</body>
-</html>
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Check</title>
-
-<style>
-
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#000;
+background:#0d0d0d;
 color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
 }
 
-.box{
-width:92%;
-max-width:380px;
-background:#121212;
+.container{
+max-width:400px;
+margin:auto;
 padding:20px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.7);
 }
 
-/* HEADER */
 .header{
 display:flex;
 align-items:center;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-.avatar{
+.logo{
 width:45px;
 height:45px;
-border-radius:50%;
-object-fit:cover;
+border-radius:10px;
+background:#ffcc00;
 margin-right:10px;
-border:2px solid #ff0050;
 }
 
-.user-info{
-font-size:13px;
-}
-
-.name{
+.title{
+font-size:18px;
 font-weight:bold;
 }
 
-.status{
-color:#25f4ee;
-font-size:12px;
-}
-
-/* CONTENT */
-
-.badge{
-background:#ff0050;
-padding:5px 10px;
-border-radius:8px;
-display:inline-block;
-margin-bottom:10px;
-font-size:12px;
+.card{
+background:#1a1a1a;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
+text-align:center;
 }
 
 h1{
 font-size:20px;
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
 p{
 font-size:14px;
 color:#ccc;
-line-height:1.5;
 }
 
-.steps{
-margin-top:12px;
-font-size:13px;
-color:#aaa;
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+border:none;
+outline:none;
+font-size:14px;
 }
 
-.steps div{
-margin:5px 0;
-}
-
+/* BUTTON */
 button{
-margin-top:18px;
 width:100%;
 padding:14px;
+margin-top:15px;
 border:none;
 border-radius:10px;
-background:linear-gradient(90deg,#ff0050,#ff6ec7);
-color:white;
-font-size:16px;
+background:#ffcc00;
+color:#000;
 font-weight:bold;
+font-size:15px;
 cursor:pointer;
 }
 
-.small{
+button:disabled{
+opacity:0.6;
+cursor:not-allowed;
+}
+
+.trust{
+margin-top:15px;
 font-size:12px;
-color:#888;
+color:#aaa;
+}
+
+.live{
+margin-top:15px;
+font-size:13px;
+color:#00ffcc;
+line-height:1.6;
+}
+
+.error{
+color:#ff4d4d;
+font-size:12px;
 margin-top:8px;
-text-align:center;
+display:none;
 }
 
 </style>
@@ -260,43 +111,86 @@ text-align:center;
 
 <body>
 
-<div class="box">
+<div class="container">
 
-<!-- PROFILE HEADER -->
 <div class="header">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim43T2Upe5I9JpXQnG6ObL7mE7W5kCgm8HqRjEZkLZYRryxZG_ExQzKRbFgCLRQsVOIRZmVuG-2MCYfxUV90blgtL6SH1PAbmWdRonNhOr3DZ1GP9ZepMNVtB4ysZ0byTATowxmPDAUvkLAhGct8eujzlVFPsytbjtT8UHbJq4IBBYCiF3mWsFRPKtQgA/s751/From%20Main%20Klickpin%20CF-%20Uploaded%20by%20user%20-%207wh25clRX.jpg" class="avatar">
-<div class="user-info">
-<div class="name">Jessica • 24</div>
-<div class="status">● Online now</div>
-</div>
+<div class="logo"></div>
+<div class="title">Chat & Earn Zimbabwe</div>
 </div>
 
-<div class="badge">⏱ Takes 30 seconds</div>
+<div class="card">
 
-<h1>Quick Online Check</h1>
+<h1>Start Chatting & Earn 💬</h1>
 
 <p>
-Hi 👋
-before we start, I just need to ask you a few quick simple questions about yourself.
-It will take less than 30 seconds. Answer this simple questions to see if you qualify. Payments are sent via EcoCash
+Sign up to chat with international users and receive rewards directly to your EcoCash account.
 </p>
 
-<div class="steps">
-<div>✅ No experience needed</div>
-<div>✅ Works on your phone</div>
-<div>✅ Only 6 quick questions</div>
+<input type="text" id="name" placeholder="Enter your name">
+<input type="text" id="age" placeholder="Enter your age">
+
+<div class="error" id="error">Please enter a valid name and age (15+)</div>
+
+<button onclick="startNow()">CREATE ACCOUNT</button>
+
+<div class="trust">
+✔ No experience needed <br>
+✔ Works on any phone <br>
+✔ Payments via MTN MoMo
 </div>
 
-<button onclick="goOffer()">START NOW</button>
+<div class="live">
+⚡ 12 chatting spots left today <br>
+<span id="liveText">Ama just earned GHS 320</span>
+</div>
 
-<div class="small">Most people finish this in under 30 seconds</div>
+</div>
 
 </div>
 
 <script>
-function goOffer(){
-window.location.href="https://ln.run/Kro_f";
+
+// 🔥 LIVE ROTATION
+const messages = [
+"Ama just earned GHS 320",
+"Kofi received payment today",
+"Kwame just made GHS 210",
+"Akosua earned GHS 150 today",
+"Yaw just joined and got paid"
+];
+
+let index = 0;
+
+function updateLive(){
+index = (index + 1) % messages.length;
+document.getElementById("liveText").innerText = messages[index];
 }
+
+setInterval(updateLive, 2500);
+
+
+// 🚀 VALIDATION + REDIRECT
+function startNow(){
+
+let name = document.getElementById("name").value.trim();
+let age = document.getElementById("age").value.trim();
+
+if(name === "" || age === "" || isNaN(age) || age < 14){
+document.getElementById("error").style.display = "block";
+return;
+}
+
+document.getElementById("error").style.display = "none";
+
+const btn = document.querySelector("button");
+btn.innerText = "Creating account...";
+btn.disabled = true;
+
+setTimeout(function(){
+window.location.href="https://ln.run/Kro_f";
+}, 1200);
+}
+
 </script>
 
 </body>
