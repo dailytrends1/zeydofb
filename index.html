@@ -1,100 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Question</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#000;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    text-align:center;
-}
-
-.container{
-    width:90%;
-    max-width:400px;
-}
-
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:20px;
-}
-
-.question{
-    font-size:24px;
-    font-weight:600;
-    margin-bottom:30px;
-}
-
-.btn{
-    display:block;
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    font-size:18px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.yes{
-    background:#FE2C55; /* TikTok pink/red */
-    color:#fff;
-}
-
-.no{
-    background:#25F4EE; /* TikTok cyan */
-    color:#000;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-    opacity:0.9;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-    <div class="logo">Please Answer this Simple Questions</div>
-    <div class="question">Are you from Zimbabwe?</div>
-
-    <button class="btn yes" onclick="goLink()">Yes</button>
-    <button class="btn no" onclick="goLink()">No</button>
-</div>
-
-<script>
-function goLink(){
-    window.location.href = "https://ln.run/Kro_f";
-}
+    <script>
+    var APP_CONFIG = {
+        "domain": "https://jup9.com",
+        "mainExit_currentTab_zoneId": 11076164,
+        "mainExit_newTab_zoneId": 11076163,
+        "reverse_zoneId": 11076162,
+        "push_zoneId": 11076167,
+        "autoexit_zoneId": 11076165,
+        "autoexit_timeToRedirect": 90,
+        "back_zoneId": 11076166,
+        "back_count": 10
+    };
 </script>
-
-</body>
-</html>
-<!--
-<<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoCash Video Rewards</title>
+<title>Watch Videos & Get Rewarded</title>
 
 <style>
 *{
@@ -105,169 +27,189 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f1f1f1;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
+background:#f3f3f3;
 padding:20px;
 }
 
-.card{
+.container{
+max-width:550px;
+margin:auto;
 background:#fff;
-width:100%;
-max-width:420px;
-border:4px solid #16a34a;
-border-radius:12px;
-padding:25px;
+border:5px solid #111;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.header{
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
+padding:20px;
 }
 
 .logo{
-font-size:34px;
+width:120px;
 margin-bottom:10px;
 }
 
-h1{
-font-size:34px;
-font-weight:bold;
-line-height:1.2;
-margin-bottom:20px;
+.title{
+font-size:58px;
+font-weight:900;
+line-height:1;
+color:#111;
 }
 
-.position{
-font-size:20px;
-font-weight:bold;
-margin-bottom:25px;
+.rewarded{
+color:#ff2d75;
 }
 
-.pay{
-font-size:19px;
+.bar{
+background:#111;
+color:#fff;
+text-align:center;
+padding:15px;
+font-size:26px;
 font-weight:bold;
-margin-bottom:25px;
-line-height:1.8;
+}
+
+.bar span{
+color:#00d8ff;
+}
+
+.reward-box{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:15px;
+padding:15px;
+border-radius:15px;
+background:#fff;
+border:3px solid #eee;
+}
+
+.reward-left{
+font-size:30px;
+font-weight:bold;
+}
+
+.reward-right{
+background:#ff2d75;
+color:#fff;
+padding:10px 20px;
+border-radius:12px;
+font-size:28px;
+font-weight:bold;
+}
+
+.reward-right.blue{
+background:#00d8ff;
+color:#111;
 }
 
 .section{
-margin-top:20px;
-font-size:16px;
-line-height:1.7;
+padding:15px 25px;
 }
 
-.section b{
-display:block;
-margin-bottom:8px;
-font-size:18px;
+.section h3{
+font-size:28px;
+margin-bottom:10px;
 }
 
-.btn{
+.section p{
+font-size:20px;
+line-height:1.5;
+}
+
+.apply{
+padding:20px;
+}
+
+.apply-btn{
 display:block;
-margin-top:30px;
-background:#16a34a;
+width:100%;
+text-align:center;
+background:#111;
 color:#fff;
 text-decoration:none;
-padding:16px;
+font-size:42px;
+font-weight:900;
+padding:20px;
+border-radius:20px;
+border:4px solid #ff2d75;
+box-shadow:0 0 20px rgba(255,45,117,.4);
+}
+
+.apply-btn:hover{
+transform:scale(1.02);
+}
+
+.footer{
+text-align:center;
+padding:15px;
 font-size:22px;
 font-weight:bold;
-border-radius:12px;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.03);
-}
-
-.live{
-margin-top:18px;
-font-size:14px;
-color:#555;
-}
-
-.dot{
-height:10px;
-width:10px;
-background:#16a34a;
-border-radius:50%;
-display:inline-block;
-margin-right:5px;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:1;}
-50%{opacity:0.3;}
-100%{opacity:1;}
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
+<div class="container">
 
-<div class="logo">▶️</div>
+<div class="header">
+<img class="logo"
+src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg">
 
-<h1>
+<div class="title">
 WATCH VIDEOS<br>
-& GET REWARDED
-</h1>
-
-<div class="position">
-POSITION: PART-TIME ONLINE VIEWER
+& GET <span class="rewarded">REWARDED</span>
+</div>
 </div>
 
-<div class="pay">
-1 Video = $2 Reward<br>
-5 Videos = $12 Reward<br>
-10 Videos = $30 Reward
+<div class="bar">
+EARN REWARDS TO <span>ECOCASH</span>
+</div>
+
+<div class="reward-box">
+<div class="reward-left">▶ 1 VIDEO</div>
+<div class="reward-right">$2</div>
+</div>
+
+<div class="reward-box">
+<div class="reward-left">▶ 5 VIDEOS</div>
+<div class="reward-right blue">$10</div>
+</div>
+
+<div class="reward-box">
+<div class="reward-left">▶ 10 VIDEOS</div>
+<div class="reward-right">$20</div>
 </div>
 
 <div class="section">
-<b>HOW IT WORKS</b>
-Watch short trending videos using only your mobile phone and receive rewards directly to your EcoCash account.
+<h3>JOB RESPONSIBILITIES</h3>
+<p>Watch short videos and receive rewards using only your mobile phone.</p>
 </div>
 
 <div class="section">
-<b>BENEFITS</b>
-Remote Work • Flexible Time • Simple Tasks
+<h3>BENEFITS</h3>
+<p>Flexible time, work from anywhere, instant rewards to EcoCash.</p>
 </div>
 
 <div class="section">
-<b>REQUIREMENTS</b>
-EcoCash Account & Internet Connection
+<h3>REQUIREMENTS</h3>
+<p>EcoCash account and internet connection.
+Answer this simple questions like your age, gender and your device type to complete the sign up.</p>
 </div>
 
-<a href="https://ln.run/Kro_f" class="btn">
-APPLY NOW
+<div class="apply">
+<a href="https://ln.run/Kro_f" class="apply-btn">
+SIGN UP →
 </a>
+</div>
 
-<div class="live">
-<span class="dot"></span>
-<span id="count">184</span> people are applying now
+<div class="footer">
+START EARNING TODAY!
 </div>
 
 </div>
-
-<script>
-let count = 184;
-
-setInterval(()=>{
-let random = Math.floor(Math.random()*4);
-
-if(Math.random()>0.5){
-count += random;
-}else{
-count -= random;
-}
-
-if(count < 150){
-count = 150;
-}
-
-document.getElementById("count").innerText = count;
-},2000);
-</script>
 
 </body>
 </html>
