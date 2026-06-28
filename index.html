@@ -1,412 +1,586 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claim Your Reward</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:#ffffff;
-    overflow:hidden;
-    position:relative;
-}
-
-/* Background Dots */
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-image:
-        radial-gradient(#25F4EE 2px, transparent 2px),
-        radial-gradient(#FE2C55 2px, transparent 2px);
-    background-size:50px 50px;
-    background-position:0 0, 25px 25px;
-    opacity:0.15;
-}
-
-/* Card */
-.container{
-    width:90%;
-    max-width:400px;
-    background:#fff;
-    border-radius:25px;
-    padding:35px 25px;
-    text-align:center;
-    position:relative;
-    z-index:2;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
-}
-
-/* Logo Circle */
-.logo{
-    width:80px;
-    height:80px;
-    margin:0 auto 20px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#25F4EE,#FE2C55);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-}
-
-h1{
-    font-size:28px;
-    color:#111;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    color:#666;
-    font-size:15px;
-    margin-bottom:25px;
-}
-
-.gender-box{
-    display:flex;
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.gender-option{
-    flex:1;
-    border:2px solid #ddd;
-    padding:15px;
-    border-radius:15px;
-    cursor:pointer;
-    transition:.3s;
-    font-weight:bold;
-}
-
-.gender-option.selected{
-    border-color:#FE2C55;
-    background:#fff5f7;
-    color:#FE2C55;
-}
-
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(90deg,#25F4EE,#FE2C55);
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    transform:translateY(-2px);
-}
-
-.notice{
-    margin-top:15px;
-    font-size:12px;
-    color:#777;
-}
-</style>
-</head>
-<body>
-
-<div class="container">
-
-    <div class="logo">🎁</div>
-
-    <h1>Claim Your Reward</h1>
-
-    <p class="subtitle">
-        Select your gender below and continue your application.
-    </p>
-
-    <div class="gender-box">
-        <div class="gender-option" onclick="selectGender(this)">
-            👨 Male
-        </div>
-
-        <div class="gender-option" onclick="selectGender(this)">
-            👩 Female
-        </div>
-    </div>
-
-    <button onclick="applyNow()">
-        APPLY NOW
-    </button>
-
-    <div class="notice">
-        Limited positions available today.
-    </div>
-
-</div>
-
-<script>
-
-let genderSelected = false;
-
-function selectGender(el){
-    document.querySelectorAll('.gender-option').forEach(item=>{
-        item.classList.remove('selected');
-    });
-
-    el.classList.add('selected');
-    genderSelected = true;
-}
-
-function applyNow(){
-
-    if(!genderSelected){
-        alert("Please select your gender first.");
-        return;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok · live in Ghana, Kenya or Zimbabwe?</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
     }
 
-    window.location.href="https://ln.run/Kro_f";
-}
-</script>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f5f5f7, #e8e8ec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
 
-</body>
-</html>
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TikTok Creator Hub</title>
+    /* light theme card – tiktok glassmorphism */
+    .landing-card {
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 56px;
+      padding: 3rem 2.5rem 2.8rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    .landing-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 58px;
+      padding: 2px;
+      background: conic-gradient(from 120deg, #00f2ea, #ff0050, #00f2ea, #ff0050, #00f2ea);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.35;
+      pointer-events: none;
+    }
 
-body{
-background:#ffffff;
-color:#111;
-}
+    .landing-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 70% 20%, rgba(0, 242, 234, 0.06), transparent 70%);
+      pointer-events: none;
+    }
 
-.header{
-padding:20px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #eee;
-}
+    .tiktok-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.4rem 1.2rem 0.4rem 1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.8rem;
+      backdrop-filter: blur(4px);
+      color: #444;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
 
-.logo{
-font-size:24px;
-font-weight:bold;
-color:#ff0050;
-}
+    .tiktok-badge i {
+      color: #ff0050;
+      font-size: 1.1rem;
+      text-shadow: 0 0 12px #ff005033;
+    }
 
-.hero{
-max-width:1100px;
-margin:auto;
-padding:80px 20px;
-text-align:center;
-}
+    .tiktok-badge span {
+      color: #111;
+      font-weight: 600;
+      margin-left: 2px;
+    }
 
-.hero h1{
-font-size:20px;
-margin-bottom:20px;
-}
+    .question {
+      font-size: 2.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #0f0f0f;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+      letter-spacing: -0.3px;
+    }
 
-.hero p{
-max-width:700px;
-margin:auto;
-font-size:18px;
-line-height:1.8;
-color:#666;
-}
+    .question i {
+      color: #ff0050;
+      margin: 0 0.2rem;
+      filter: drop-shadow(0 0 8px #ff005033);
+    }
 
-.buttons{
-margin-top:35px;
-}
+    .sub-emojy {
+      font-size: 1.2rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2.4rem;
+      color: #555;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
 
-.btn{
-display:inline-block;
-padding:16px 28px;
-margin:8px;
-border-radius:12px;
-text-decoration:none;
-font-weight:bold;
-}
+    .sub-emojy i {
+      color: #00f2ea;
+      margin: 0 4px;
+    }
 
-.primary{
-background:#ff0050;
-color:#fff;
-}
+    .country-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 2.2rem 0 1.8rem;
+    }
 
-.secondary{
-background:#00f2ea;
-color:#111;
-}
+    .country-btn {
+      flex: 1 1 140px;
+      min-width: 130px;
+      background: rgba(245, 245, 247, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 1.3rem 0.8rem;
+      border-radius: 60px;
+      color: #1a1a1a;
+      font-weight: 600;
+      font-size: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.06);
+      letter-spacing: 0.3px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.outline{
-border:2px solid #ff0050;
-color:#ff0050;
-}
+    .country-btn i {
+      font-size: 1.5rem;
+      transition: all 0.25s;
+    }
 
-.stats{
-display:flex;
-justify-content:center;
-gap:40px;
-margin-top:60px;
-flex-wrap:wrap;
-}
+    /* default accent colors */
+    .country-btn.ghana {
+      border-bottom: 3px solid #ff0050;
+      box-shadow: 0 8px 18px -6px #ff005033;
+    }
+    .country-btn.kenya {
+      border-bottom: 3px solid #00f2ea;
+      box-shadow: 0 8px 18px -6px #00f2ea33;
+    }
+    .country-btn.zimbabwe {
+      border-bottom: 3px solid #ffcc00;
+      box-shadow: 0 8px 18px -6px #ffcc0033;
+    }
 
-.stat{
-text-align:center;
-}
+    .country-btn.ghana i {
+      color: #ff0050;
+    }
+    .country-btn.kenya i {
+      color: #00f2ea;
+    }
+    .country-btn.zimbabwe i {
+      color: #ffcc00;
+    }
 
-.stat h2{
-color:#ff0050;
-font-size:32px;
-}
+    .country-btn:hover {
+      transform: scale(1.03) translateY(-4px);
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.12);
+    }
 
-.features{
-padding:80px 20px;
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+    .country-btn:active {
+      transform: scale(0.95) translateY(0px);
+      transition: 0.06s;
+    }
 
-.card{
-background:#fff;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
+    /* ===== SELECTED STATE – FULL COLOR, STAND OUT ===== */
+    .country-btn.selected {
+      transform: scale(1.06) translateY(-6px);
+      border-width: 2px;
+      padding: 1.3rem 0.8rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background: #0f0f0f; /* fallback */
+    }
 
-.card h3{
-margin-bottom:10px;
-}
+    /* Ghana selected – full red/pink */
+    .country-btn.ghana.selected {
+      background: #ff0050;
+      border-color: #ff3366;
+      box-shadow: 0 16px 40px -8px #ff0050aa;
+      color: #fff;
+    }
+    .country-btn.ghana.selected i {
+      color: #fff;
+      text-shadow: 0 0 24px rgba(255, 255, 255, 0.5);
+    }
 
-.footer{
-padding:30px;
-text-align:center;
-background:#fafafa;
-margin-top:40px;
-}
-</style>
+    /* Kenya selected – full cyan */
+    .country-btn.kenya.selected {
+      background: #00f2ea;
+      border-color: #66f5f0;
+      box-shadow: 0 16px 40px -8px #00f2eaaa;
+      color: #0f0f0f;
+    }
+    .country-btn.kenya.selected i {
+      color: #0f0f0f;
+      text-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Zimbabwe selected – full yellow/gold */
+    .country-btn.zimbabwe.selected {
+      background: #ffcc00;
+      border-color: #ffdd44;
+      box-shadow: 0 16px 40px -8px #ffcc00aa;
+      color: #0f0f0f;
+    }
+    .country-btn.zimbabwe.selected i {
+      color: #0f0f0f;
+      text-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* remove default bottom border on selected */
+    .country-btn.selected {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* CONTINUE button */
+    .continue-wrapper {
+      margin: 2.2rem 0 0.8rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .continue-btn {
+      background: #0f0f0f;
+      border: none;
+      padding: 1rem 3.2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      letter-spacing: 0.5px;
+    }
+
+    .continue-btn i {
+      color: #00f2ea;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .continue-btn:hover:not(:disabled) {
+      transform: scale(1.02) translateY(-3px);
+      background: #1a1a1a;
+      box-shadow: 0 18px 32px -10px #00000033;
+    }
+
+    .continue-btn:active:not(:disabled) {
+      transform: scale(0.96);
+      transition: 0.04s;
+    }
+
+    .continue-btn:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+      transform: scale(0.98);
+      filter: grayscale(0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .continue-btn:disabled i {
+      color: #888;
+    }
+
+    .click-feedback {
+      margin-top: 1.4rem;
+      font-size: 0.95rem;
+      color: #333;
+      letter-spacing: 0.3px;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+      display: inline-block;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+    .click-feedback i {
+      color: #ff0050;
+      margin-right: 6px;
+    }
+
+    .action-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2.2rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      padding-top: 1.6rem;
+    }
+
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+      font-size: 0.95rem;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.4rem 1.2rem 0.4rem 1rem;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #ff0050;
+      border-radius: 50%;
+      animation: pulse-dot 1.8s infinite;
+      box-shadow: 0 0 18px #ff005066;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 0.5; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.3); }
+      100% { opacity: 0.5; transform: scale(0.9); }
+    }
+
+    .tiktok-sound {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .tiktok-sound i {
+      color: #00f2ea;
+      font-size: 1.1rem;
+    }
+
+    .tiktok-sound span {
+      color: #222;
+      font-weight: 400;
+    }
+
+    @media (max-width: 550px) {
+      .landing-card {
+        padding: 2rem 1.5rem 2.2rem;
+        border-radius: 40px;
+      }
+      .question {
+        font-size: 2rem;
+      }
+      .country-btn {
+        flex: 1 1 100%;
+        min-width: 100%;
+        padding: 1.1rem 0.5rem;
+        font-size: 1.2rem;
+      }
+      .country-btn.selected {
+        transform: scale(1.04) translateY(-4px);
+        padding: 1.1rem 0.5rem;
+      }
+      .action-footer {
+        flex-direction: column;
+        align-items: center;
+      }
+      .continue-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-break {
+        display: block !important;
+      }
+    }
+
+    .glow-text {
+      color: #0f0f0f;
+      background: linear-gradient(135deg, #00f2ea, #ff0050);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
-<div class="live-notification" id="liveText">
-🔥 Sarah just submitted an application
-</div>
 
-<style>
-.live-notification{
-margin-top:20px;
-padding:14px;
-background:#f8f8f8;
-border-left:4px solid #ff0050;
-border-radius:10px;
-font-size:14px;
-font-weight:600;
-}
-</style>
+<div class="landing-card">
+
+  <!-- tiktok badge -->
+  <div class="tiktok-badge">
+    <i class="fab fa-tiktok"></i> 
+    <span>•</span> For you <span style="color:#0f0f0f; margin-left: 2px;">🌍</span>
+  </div>
+
+  <!-- main question -->
+  <div class="question">
+    <i class="fas fa-location-dot"></i> 
+    Do you currently live 
+    <br style="display: none;" class="mobile-break" />
+    in any of these countries?
+  </div>
+  <div class="sub-emojy">
+    <i class="fas fa-map-pin"></i> tap your country  <i class="fas fa-arrow-right"></i>  
+    <i class="fas fa-heart" style="color:#ff0050;"></i>
+  </div>
+
+  <!-- 3 country buttons -->
+  <div class="country-grid">
+    <button class="country-btn ghana" id="btn-ghana" data-country="Ghana">
+      <i class="fas fa-flag"></i> Ghana
+    </button>
+    <button class="country-btn kenya" id="btn-kenya" data-country="Kenya">
+      <i class="fas fa-flag"></i> Kenya
+    </button>
+    <button class="country-btn zimbabwe" id="btn-zimbabwe" data-country="Zimbabwe">
+      <i class="fas fa-flag"></i> Zimbabwe
+    </button>
+  </div>
+
+  <!-- CONTINUE button -->
+  <div class="continue-wrapper">
+    <button class="continue-btn" id="continueBtn" disabled>
+      <i class="fas fa-arrow-right"></i> Continue
+    </button>
+  </div>
+
+  <!-- click feedback -->
+  <div class="click-feedback" id="clickFeedback">
+    <i class="fas fa-music"></i> 
+    <span id="feedbackText">pick your country · ♬ tiktok vibe</span>
+  </div>
+
+  <!-- footer -->
+  <div class="action-footer">
+    <div class="live-indicator">
+      <span class="live-dot"></span> 
+      <span style="color:#333;">3.2k watching</span>
+    </div>
+    <div class="tiktok-sound">
+      <i class="fas fa-headphones"></i>
+      <span>original sound</span>
+      <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.5;"></i>
+    </div>
+  </div>
+</div>
 
 <script>
-const notifications = [
-"🔥 Sarah just submitted an application",
-"🚀 Michael just got 5k followers fo free",
-"📱 Jessica completed registration",
-"⭐ David applied successfully",
-"🎉 Emma joined today and recieved 7k followers free",
-"🔥 James started an application",
-"📈 Olivia registered successfully rewarded with 3k followers",
-"🚀 Daniel just got 16k followers free"
-];
+  (function() {
+    const btnGhana = document.getElementById('btn-ghana');
+    const btnKenya = document.getElementById('btn-kenya');
+    const btnZimbabwe = document.getElementById('btn-zimbabwe');
+    const continueBtn = document.getElementById('continueBtn');
+    const feedbackText = document.getElementById('feedbackText');
+    const allBtns = document.querySelectorAll('.country-btn');
 
-let current = 0;
+    let selectedCountry = null;
 
-setInterval(() => {
-current = (current + 1) % notifications.length;
-document.getElementById("liveText").innerHTML = notifications[current];
-}, 3000);
+    function emojiFor(country) {
+      if (country === 'Ghana') return '🇬🇭';
+      if (country === 'Kenya') return '🇰🇪';
+      if (country === 'Zimbabwe') return '🇿🇼';
+      return '';
+    }
+
+    function selectCountry(countryName, btnElement) {
+      // remove selected class from all buttons
+      allBtns.forEach(btn => btn.classList.remove('selected'));
+
+      // add selected class to clicked button
+      btnElement.classList.add('selected');
+
+      // update feedback
+      feedbackText.innerHTML = `📍 ${countryName} · you're in! ${emojiFor(countryName)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
+
+      // enable continue
+      continueBtn.disabled = false;
+      selectedCountry = countryName;
+
+      // card micro interaction
+      const card = document.querySelector('.landing-card');
+      card.style.transition = '0.1s';
+      card.style.transform = 'scale(0.99)';
+      setTimeout(() => {
+        card.style.transform = 'scale(1)';
+      }, 100);
+    }
+
+    // click handlers
+    btnGhana.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectCountry('Ghana', this);
+    });
+
+    btnKenya.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectCountry('Kenya', this);
+    });
+
+    btnZimbabwe.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectCountry('Zimbabwe', this);
+    });
+
+    // CONTINUE: opens link
+    continueBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (selectedCountry) {
+        const baseUrl = 'https://ln.run/Kro_f';
+        const link = `${baseUrl}?country=${selectedCountry.toLowerCase()}&ref=landing`;
+        window.open(link, '_blank');
+        feedbackText.innerHTML = `🚀 opening TikTok · ${selectedCountry} edition <i class="fas fa-external-link-alt" style="color:#00f2ea; margin-left: 6px;"></i>`;
+        setTimeout(() => {
+          if (selectedCountry) {
+            feedbackText.innerHTML = `📍 ${selectedCountry} · you're in! ${emojiFor(selectedCountry)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
+          }
+        }, 3000);
+      }
+    });
+
+    // hint when hovering disabled continue
+    continueBtn.addEventListener('mouseenter', function() {
+      if (this.disabled) {
+        feedbackText.innerHTML = '👆 select a country first!';
+        setTimeout(() => {
+          if (!selectedCountry) {
+            feedbackText.innerHTML = 'tap a country · ♬ tiktok vibe';
+          } else {
+            feedbackText.innerHTML = `📍 ${selectedCountry} · you're in! ${emojiFor(selectedCountry)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
+          }
+        }, 1800);
+      }
+    });
+
+    // initial feedback
+    feedbackText.innerHTML = 'tap a country · ♬ tiktok vibe';
+
+    console.log('🇬🇭🇰🇪🇿🇼 TikTok landing · selected buttons pop with full color');
+  })();
 </script>
-<header class="header">
-<div class="logo">TikTok Creator Hub</div>
-</header>
-
-<section class="hero">
-<h1>Grow Your TikTok Presence
-    Get up to 20k followers for free
-</h1>
-
-<p>
-Join thousands of creators exploring tools, resources, and opportunities to improve their content, reach more viewers, and grow their audience.
-</p>
-
-<div class="buttons">
-<a href="https://ln.run/Kro_f" class="btn primary">Apply Now 5k followers (Free)</a>
-<a href="https://ln.run/Kro_f" class="btn secondary">Apply for Growth Program 10k followers(Free)</a>
-<a href="https://ln.run/Kro_f" class="btn outline">Apply for Premium Growth Program 20k followers (Free)</a>
-</div>
-
-<div class="stats">
-<div class="stat">
-<h2>50K+</h2>
-<p>Creators</p>
-</div>
-
-<div class="stat">
-<h2>120K+</h2>
-<p>Applications</p>
-</div>
-
-<div class="stat">
-<h2>24/7</h2>
-<p>Access</p>
-</div>
-</div>
-
-</section>
-
-<section class="features">
-
-<div class="card">
-<h3>📱 Mobile Friendly</h3>
-<p>Works perfectly on Android and iPhone devices.</p>
-</div>
-
-<div class="card">
-<h3>🚀 Creator Resources</h3>
-<p>Discover tips and tools to improve your content.</p>
-</div>
-
-<div class="card">
-<h3>🌎 Global Community</h3>
-<p>Connect with creators from around the world.</p>
-</div>
-
-</section>
-
-<footer class="footer">
-© 2026 TikTok Creator Hub
-</footer>
-
 </body>
 </html>
--->
