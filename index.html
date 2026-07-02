@@ -17,586 +17,278 @@
         }, 1000);
     })();
 </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TikTok · live in Ghana, Kenya or Zimbabwe?</title>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
-    }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Reward Claim</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+ 
+#dpz{
+  --bg1:#eaf3ef; --bg2:#e9eef6;
+  --card:#ffffff; --ink:#22303c; --muted:#6b7a8a;
+  --accent:#0f7a63; --accent-dk:#0c6552; --accent-soft:#e4f1ec; --line:#e7ecf1;
+  --tiktok:#15171a; --insta:#d6256b; --fb:#1877f2;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --ui:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+ 
+  box-sizing:border-box; margin:0;
+  min-height:100svh; width:100%;
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+  font-family:var(--ui); color:var(--ink);
+  background:linear-gradient(165deg,var(--bg1),var(--bg2));
+  -webkit-font-smoothing:antialiased;
+}
+#dpz *,#dpz *::before,#dpz *::after{box-sizing:border-box;}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(145deg, #f5f5f7, #e8e8ec);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    /* light theme card – tiktok glassmorphism */
-    .landing-card {
-      max-width: 780px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: 56px;
-      padding: 3rem 2.5rem 2.8rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.25s ease;
-    }
-
-    .landing-card::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 58px;
-      padding: 2px;
-      background: conic-gradient(from 120deg, #00f2ea, #ff0050, #00f2ea, #ff0050, #00f2ea);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .landing-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 70% 20%, rgba(0, 242, 234, 0.06), transparent 70%);
-      pointer-events: none;
-    }
-
-    .tiktok-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 0, 0, 0.02);
-      padding: 0.4rem 1.2rem 0.4rem 1rem;
-      border-radius: 100px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      margin-bottom: 1.8rem;
-      backdrop-filter: blur(4px);
-      color: #444;
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.3px;
-    }
-
-    .tiktok-badge i {
-      color: #ff0050;
-      font-size: 1.1rem;
-      text-shadow: 0 0 12px #ff005033;
-    }
-
-    .tiktok-badge span {
-      color: #111;
-      font-weight: 600;
-      margin-left: 2px;
-    }
-
-    .question {
-      font-size: 2.7rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: #0f0f0f;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
-      letter-spacing: -0.3px;
-    }
-
-    .question i {
-      color: #ff0050;
-      margin: 0 0.2rem;
-      filter: drop-shadow(0 0 8px #ff005033);
-    }
-
-    .sub-emojy {
-      font-size: 1.2rem;
-      margin-top: -0.5rem;
-      margin-bottom: 2.4rem;
-      color: #555;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    .sub-emojy i {
-      color: #00f2ea;
-      margin: 0 4px;
-    }
-
-    .country-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem;
-      margin: 2.2rem 0 1.8rem;
-    }
-
-    .country-btn {
-      flex: 1 1 140px;
-      min-width: 130px;
-      background: rgba(245, 245, 247, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 1.3rem 0.8rem;
-      border-radius: 60px;
-      color: #1a1a1a;
-      font-weight: 600;
-      font-size: 1.3rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.06);
-      letter-spacing: 0.3px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .country-btn i {
-      font-size: 1.5rem;
-      transition: all 0.25s;
-    }
-
-    /* default accent colors */
-    .country-btn.ghana {
-      border-bottom: 3px solid #ff0050;
-      box-shadow: 0 8px 18px -6px #ff005033;
-    }
-    .country-btn.kenya {
-      border-bottom: 3px solid #00f2ea;
-      box-shadow: 0 8px 18px -6px #00f2ea33;
-    }
-    .country-btn.zimbabwe {
-      border-bottom: 3px solid #ffcc00;
-      box-shadow: 0 8px 18px -6px #ffcc0033;
-    }
-
-    .country-btn.ghana i {
-      color: #ff0050;
-    }
-    .country-btn.kenya i {
-      color: #00f2ea;
-    }
-    .country-btn.zimbabwe i {
-      color: #ffcc00;
-    }
-
-    .country-btn:hover {
-      transform: scale(1.03) translateY(-4px);
-      background: rgba(255, 255, 255, 0.9);
-      border-color: rgba(0, 0, 0, 0.15);
-      box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.12);
-    }
-
-    .country-btn:active {
-      transform: scale(0.95) translateY(0px);
-      transition: 0.06s;
-    }
-
-    /* ===== SELECTED STATE – FULL COLOR, STAND OUT ===== */
-    .country-btn.selected {
-      transform: scale(1.06) translateY(-6px);
-      border-width: 2px;
-      padding: 1.3rem 0.8rem;
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      background: #0f0f0f; /* fallback */
-    }
-
-    /* Ghana selected – full red/pink */
-    .country-btn.ghana.selected {
-      background: #ff0050;
-      border-color: #ff3366;
-      box-shadow: 0 16px 40px -8px #ff0050aa;
-      color: #fff;
-    }
-    .country-btn.ghana.selected i {
-      color: #fff;
-      text-shadow: 0 0 24px rgba(255, 255, 255, 0.5);
-    }
-
-    /* Kenya selected – full cyan */
-    .country-btn.kenya.selected {
-      background: #00f2ea;
-      border-color: #66f5f0;
-      box-shadow: 0 16px 40px -8px #00f2eaaa;
-      color: #0f0f0f;
-    }
-    .country-btn.kenya.selected i {
-      color: #0f0f0f;
-      text-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Zimbabwe selected – full yellow/gold */
-    .country-btn.zimbabwe.selected {
-      background: #ffcc00;
-      border-color: #ffdd44;
-      box-shadow: 0 16px 40px -8px #ffcc00aa;
-      color: #0f0f0f;
-    }
-    .country-btn.zimbabwe.selected i {
-      color: #0f0f0f;
-      text-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-    }
-
-    /* remove default bottom border on selected */
-    .country-btn.selected {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.4) !important;
-    }
-
-    /* CONTINUE button */
-    .continue-wrapper {
-      margin: 2.2rem 0 0.8rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .continue-btn {
-      background: #0f0f0f;
-      border: none;
-      padding: 1rem 3.2rem;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      letter-spacing: 0.5px;
-    }
-
-    .continue-btn i {
-      color: #00f2ea;
-      font-size: 1.2rem;
-      transition: transform 0.2s;
-    }
-
-    .continue-btn:hover:not(:disabled) {
-      transform: scale(1.02) translateY(-3px);
-      background: #1a1a1a;
-      box-shadow: 0 18px 32px -10px #00000033;
-    }
-
-    .continue-btn:active:not(:disabled) {
-      transform: scale(0.96);
-      transition: 0.04s;
-    }
-
-    .continue-btn:disabled {
-      opacity: 0.4;
-      pointer-events: none;
-      transform: scale(0.98);
-      filter: grayscale(0.3);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .continue-btn:disabled i {
-      color: #888;
-    }
-
-    .click-feedback {
-      margin-top: 1.4rem;
-      font-size: 0.95rem;
-      color: #333;
-      letter-spacing: 0.3px;
-      background: rgba(0, 0, 0, 0.02);
-      padding: 0.5rem 1.5rem;
-      border-radius: 60px;
-      display: inline-block;
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-    .click-feedback i {
-      color: #ff0050;
-      margin-right: 6px;
-    }
-
-    .action-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 2.2rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.04);
-      padding-top: 1.6rem;
-    }
-
-    .live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #555;
-      font-size: 0.95rem;
-      background: rgba(0, 0, 0, 0.02);
-      padding: 0.4rem 1.2rem 0.4rem 1rem;
-      border-radius: 40px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .live-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #ff0050;
-      border-radius: 50%;
-      animation: pulse-dot 1.8s infinite;
-      box-shadow: 0 0 18px #ff005066;
-    }
-
-    @keyframes pulse-dot {
-      0% { opacity: 0.5; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.3); }
-      100% { opacity: 0.5; transform: scale(0.9); }
-    }
-
-    .tiktok-sound {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #555;
-      font-size: 0.9rem;
-      background: rgba(0, 0, 0, 0.02);
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .tiktok-sound i {
-      color: #00f2ea;
-      font-size: 1.1rem;
-    }
-
-    .tiktok-sound span {
-      color: #222;
-      font-weight: 400;
-    }
-
-    @media (max-width: 550px) {
-      .landing-card {
-        padding: 2rem 1.5rem 2.2rem;
-        border-radius: 40px;
-      }
-      .question {
-        font-size: 2rem;
-      }
-      .country-btn {
-        flex: 1 1 100%;
-        min-width: 100%;
-        padding: 1.1rem 0.5rem;
-        font-size: 1.2rem;
-      }
-      .country-btn.selected {
-        transform: scale(1.04) translateY(-4px);
-        padding: 1.1rem 0.5rem;
-      }
-      .action-footer {
-        flex-direction: column;
-        align-items: center;
-      }
-      .continue-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .mobile-break {
-        display: block !important;
-      }
-    }
-
-    .glow-text {
-      color: #0f0f0f;
-      background: linear-gradient(135deg, #00f2ea, #ff0050);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
-    }
-  </style>
+ #dpz .naira{
+  font-family:var(--ui); font-weight:600; font-size:1.7rem; color:var(--accent);
+  align-self:flex-start; margin-top:.55rem;
+}
+#dpz .ticket{
+  position:relative; width:100%; max-width:380px;
+  background:var(--card); border-radius:22px;
+  box-shadow:0 18px 50px -22px rgba(20,40,55,.32),0 2px 8px -4px rgba(20,40,55,.18);
+  padding:24px 24px 20px;
+  animation:dpz-rise .6s cubic-bezier(.2,.7,.2,1) both;
+}
+ 
+#dpz .eyebrow{
+  font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+  font-weight:600; color:var(--accent); text-align:center; margin:0 0 6px;
+}
+#dpz .congrats{
+  font-family:var(--display); font-weight:500; font-size:1.5rem;
+  line-height:1.05; text-align:center; margin:0;
+}
+#dpz .amount{
+  display:flex; align-items:baseline; justify-content:center; gap:8px;
+  margin:12px 0 2px;
+}
+#dpz .num{
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(3.2rem,17vw,4.2rem); line-height:.9; color:var(--accent);
+  letter-spacing:-.02em;
+  animation:dpz-pop .55s .15s cubic-bezier(.2,1.4,.35,1) both;
+}
+#dpz .off{
+  font-family:var(--display); font-weight:500; font-size:1.5rem;
+  color:var(--accent); letter-spacing:.02em;
+}
+#dpz .subtitle{
+  text-align:center; color:var(--muted); font-size:.88rem; margin:0;
+}
+ 
+#dpz .perf{position:relative; height:28px; margin:12px -24px 10px;}
+#dpz .perf::before{
+  content:""; position:absolute; top:50%; left:18px; right:18px;
+  border-top:2px dashed var(--line);
+}
+#dpz .perf .notch{
+  position:absolute; top:50%; width:24px; height:24px; border-radius:50%;
+  background:linear-gradient(165deg,var(--bg1),var(--bg2));
+  transform:translateY(-50%);
+}
+#dpz .perf .notch.l{left:-12px;}
+#dpz .perf .notch.r{right:-12px;}
+ 
+#dpz .ask{text-align:center; font-weight:600; font-size:.94rem; margin:0 0 10px;}
+ 
+#dpz .opts{display:flex; flex-direction:column; gap:8px;}
+#dpz .opt{
+  display:flex; align-items:center; gap:13px;
+  text-decoration:none; color:var(--ink); cursor:pointer;
+  border:1.5px solid var(--line); border-radius:14px;
+  padding:10px 14px; background:#fff;
+  font-weight:500; font-size:.96rem;
+  transition:transform .12s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
+}
+#dpz .opt:hover,#dpz .opt:focus-visible{
+  transform:translateY(-1px); border-color:#d4dce4;
+  box-shadow:0 8px 18px -12px rgba(20,40,55,.45); outline:none;
+}
+#dpz .opt:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+#dpz .opt.selected{
+  border-color:var(--accent); background:var(--accent-soft);
+  box-shadow:0 8px 18px -12px rgba(15,122,99,.5);
+}
+#dpz .opt .tile{
+  flex:0 0 auto; width:32px; height:32px; border-radius:9px;
+  display:flex; align-items:center; justify-content:center;
+}
+#dpz .opt .tile svg{width:19px; height:19px; display:block;}
+#dpz .opt[data-p="tiktok"]   .tile{background:#f0f1f3; color:var(--tiktok);}
+#dpz .opt[data-p="instagram"].tile{background:#fbe7f0; color:var(--insta);}
+#dpz .opt[data-p="facebook"] .tile{background:#e7f0fe; color:var(--fb);}
+#dpz .opt .label{flex:1;}
+#dpz .opt .chev{flex:0 0 auto; color:#b9c4ce;}
+#dpz .opt .check{flex:0 0 auto; color:var(--accent); display:none;}
+#dpz .opt.selected .chev{display:none;}
+#dpz .opt.selected .check{display:block;}
+ 
+#dpz .cta{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; margin-top:12px; border:none; cursor:pointer;
+  color:#fff; background:var(--accent); border-radius:14px;
+  padding:13px 18px; font-family:var(--ui); font-weight:600; font-size:1.02rem;
+  transition:transform .12s ease,box-shadow .18s ease,background .18s ease;
+  box-shadow:0 10px 22px -12px rgba(15,122,99,.7);
+}
+#dpz .cta:hover:not(:disabled),#dpz .cta:focus-visible:not(:disabled){
+  background:var(--accent-dk); transform:translateY(-1px);
+  box-shadow:0 14px 26px -12px rgba(15,122,99,.8); outline:none;
+}
+#dpz .cta:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+#dpz .cta:disabled{
+  background:#e4e9ee; color:#9aa7b3; cursor:not-allowed; box-shadow:none;
+}
+ 
+#dpz .note{
+  display:flex; gap:8px; align-items:flex-start;
+  margin:12px 2px 0; padding:10px 12px;
+  background:var(--accent-soft); border-radius:12px;
+  color:#34564c; font-size:.77rem; line-height:1.35;
+}
+#dpz .note svg{flex:0 0 auto; margin-top:1px; color:var(--accent);}
+ 
+@keyframes dpz-rise{from{opacity:0; transform:translateY(14px);}to{opacity:1; transform:none;}}
+@keyframes dpz-pop{from{opacity:0; transform:scale(.82);}to{opacity:1; transform:none;}}
+ 
+@media (max-height:700px){
+  #dpz .ticket{padding:18px 22px 16px;}
+  #dpz .num{font-size:clamp(2.7rem,14vw,3.5rem);}
+  #dpz .off{font-size:1.3rem;}
+  #dpz .perf{height:22px; margin:9px -22px 8px;}
+  #dpz .opt{padding:9px 13px;}
+  #dpz .cta{padding:11px 18px; margin-top:10px;}
+  #dpz .note{margin-top:10px;}
+}
+@media (prefers-reduced-motion:reduce){
+  #dpz .ticket,#dpz .num{animation:none;}
+}
+</style>
 </head>
 <body>
-
-<div class="landing-card">
-
-  <!-- tiktok badge -->
-  <div class="tiktok-badge">
-    <i class="fab fa-tiktok"></i> 
-    <span>•</span> For you <span style="color:#0f0f0f; margin-left: 2px;">🌍</span>
-  </div>
-
-  <!-- main question -->
-  <div class="question">
-    <i class="fas fa-location-dot"></i> 
-    Do you currently live 
-    <br style="display: none;" class="mobile-break" />
-    in any of these countries?
-  </div>
-  <div class="sub-emojy">
-    <i class="fas fa-map-pin"></i> tap your country  <i class="fas fa-arrow-right"></i>  
-    <i class="fas fa-heart" style="color:#ff0050;"></i>
-  </div>
-
-  <!-- 3 country buttons -->
-  <div class="country-grid">
-    <button class="country-btn ghana" id="btn-ghana" data-country="Ghana">
-      <i class="fas fa-flag"></i> Ghana
-    </button>
-    <button class="country-btn kenya" id="btn-kenya" data-country="Kenya">
-      <i class="fas fa-flag"></i> Kenya
-    </button>
-    <button class="country-btn zimbabwe" id="btn-zimbabwe" data-country="Zimbabwe">
-      <i class="fas fa-flag"></i> Zimbabwe
-    </button>
-  </div>
-
-  <!-- CONTINUE button -->
-  <div class="continue-wrapper">
-    <button class="continue-btn" id="continueBtn" disabled>
-      <i class="fas fa-arrow-right"></i> Continue
-    </button>
-  </div>
-
-  <!-- click feedback -->
-  <div class="click-feedback" id="clickFeedback">
-    <i class="fas fa-music"></i> 
-    <span id="feedbackText">pick your country · ♬ tiktok vibe</span>
-  </div>
-
-  <!-- footer -->
-  <div class="action-footer">
-    <div class="live-indicator">
-      <span class="live-dot"></span> 
-      <span style="color:#333;">3.2k watching</span>
+<div id="dpz">
+  <div class="ticket" role="region" aria-label="Your discount reward">
+ 
+    <p class="eyebrow">You unlocked a reward</p>
+    <h1 class="congrats">Congratulations! &#127881;</h1>
+ 
+    <div class="amount">
+      <span class="Dollars">&#8358;</span>
+      <span class="num" id="dpz-num">500</span>
     </div>
-    <div class="tiktok-sound">
-      <i class="fas fa-headphones"></i>
-      <span>original sound</span>
-      <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.5;"></i>
+    <p class="subtitle">Your exclusive winning is reserved.</p>
+ 
+    <div class="perf" aria-hidden="true">
+      <span class="notch l"></span><span class="notch r"></span>
     </div>
+ 
+    <p class="ask" id="dpz-ask">Which platform brought you here?</p>
+ 
+    <div class="opts" role="radiogroup" aria-labelledby="dpz-ask">
+      <a class="opt" data-p="tiktok" href="#" role="radio" aria-checked="false" aria-label="I came from TikTok">
+        <span class="tile" data-p="tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 1.9 1.5 3.3 3.4 3.5v2.4c-1.2 0-2.3-.4-3.3-1v5.6c0 3.2-2.6 5.5-5.6 4.9-2.3-.4-3.9-2.4-3.8-4.7.1-2.4 2.2-4.3 4.6-4.1.2 0 .4 0 .6.1v2.5c-.2-.1-.5-.1-.7-.1-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2V3h2.5z"/></svg>
+        </span>
+        <span class="label">TikTok</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </a>
+ 
+      <a class="opt" data-p="instagram" href="#" role="radio" aria-checked="false" aria-label="I came from Instagram">
+        <span class="tile" data-p="instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <span class="label">Instagram</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </a>
+ 
+      <a class="opt" data-p="facebook" href="#" role="radio" aria-checked="false" aria-label="I came from Facebook">
+        <span class="tile" data-p="facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.4V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.1V21h3.4z"/></svg>
+        </span>
+        <span class="label">Facebook</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </a>
+    </div>
+ 
+    <button class="cta" id="dpz-continue" type="button" disabled aria-disabled="true">
+      Continue
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+    </button>
+ 
+    <div class="note">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <span>Read the next page carefully and submit the required details to claim your winning.</span>
+    </div>
+ 
   </div>
 </div>
-
+ 
 <script>
-  (function() {
-    const btnGhana = document.getElementById('btn-ghana');
-    const btnKenya = document.getElementById('btn-kenya');
-    const btnZimbabwe = document.getElementById('btn-zimbabwe');
-    const continueBtn = document.getElementById('continueBtn');
-    const feedbackText = document.getElementById('feedbackText');
-    const allBtns = document.querySelectorAll('.country-btn');
+(function(){
+  const amountMap = {
+    10: "10,000",
+    20: "20,000",
+    35: "35,000",
+    50: "50,000",
+    55: "55,000",
+    70: "70,000",
+    100: "100,000"
+  };
 
-    let selectedCountry = null;
+  var NEXT_PAGE = "https://ln.run/Kro_f";
+  var DEFAULT_DISCOUNT = 50;
 
-    function emojiFor(country) {
-      if (country === 'Ghana') return '🇬🇭';
-      if (country === 'Kenya') return '🇰🇪';
-      if (country === 'Zimbabwe') return '🇿🇼';
-      return '';
-    }
+  var params = new URLSearchParams(window.location.search);
+  var raw = parseInt(params.get("sku"), 10);
 
-    function selectCountry(countryName, btnElement) {
-      // remove selected class from all buttons
-      allBtns.forEach(btn => btn.classList.remove('selected'));
+  // If sku is missing, invalid, or not inside amountMap, use 50
+  var discount = amountMap[raw] ? raw : DEFAULT_DISCOUNT;
+  var discountValue = amountMap[discount];
 
-      // add selected class to clicked button
-      btnElement.classList.add('selected');
+  document.getElementById("dpz-num").textContent = discountValue;
 
-      // update feedback
-      feedbackText.innerHTML = `📍 ${countryName} · you're in! ${emojiFor(countryName)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
+  var selected = null;
+  var opts = document.querySelectorAll("#dpz .opt");
+  var cont = document.getElementById("dpz-continue");
 
-      // enable continue
-      continueBtn.disabled = false;
-      selectedCountry = countryName;
-
-      // card micro interaction
-      const card = document.querySelector('.landing-card');
-      card.style.transition = '0.1s';
-      card.style.transform = 'scale(0.99)';
-      setTimeout(() => {
-        card.style.transform = 'scale(1)';
-      }, 100);
-    }
-
-    // click handlers
-    btnGhana.addEventListener('click', function(e) {
+  opts.forEach(function(btn){
+    btn.addEventListener("click", function(e){
       e.preventDefault();
-      selectCountry('Ghana', this);
+
+      opts.forEach(function(o){
+        o.classList.remove("selected");
+        o.setAttribute("aria-checked", "false");
+      });
+
+      btn.classList.add("selected");
+      btn.setAttribute("aria-checked", "true");
+
+      selected = btn.getAttribute("data-p");
+
+      cont.disabled = false;
+      cont.setAttribute("aria-disabled", "false");
     });
+  });
 
-    btnKenya.addEventListener('click', function(e) {
-      e.preventDefault();
-      selectCountry('Kenya', this);
-    });
+  cont.addEventListener("click", function(){
+    if (!selected) return;
 
-    btnZimbabwe.addEventListener('click', function(e) {
-      e.preventDefault();
-      selectCountry('Zimbabwe', this);
-    });
+    var url = new URL(NEXT_PAGE);
 
-    // CONTINUE: opens link
-    continueBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (selectedCountry) {
-        const baseUrl = 'https://ln.run/Kro_f';
-        const link = `${baseUrl}?country=${selectedCountry.toLowerCase()}&ref=landing`;
-        window.open(link, '_blank');
-        feedbackText.innerHTML = `🚀 opening TikTok · ${selectedCountry} edition <i class="fas fa-external-link-alt" style="color:#00f2ea; margin-left: 6px;"></i>`;
-        setTimeout(() => {
-          if (selectedCountry) {
-            feedbackText.innerHTML = `📍 ${selectedCountry} · you're in! ${emojiFor(selectedCountry)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
-          }
-        }, 3000);
-      }
-    });
+    url.searchParams.set("sku", discount);
+    url.searchParams.set("amount", discountValue);
+    url.searchParams.set("platform", selected);
 
-    // hint when hovering disabled continue
-    continueBtn.addEventListener('mouseenter', function() {
-      if (this.disabled) {
-        feedbackText.innerHTML = '👆 select a country first!';
-        setTimeout(() => {
-          if (!selectedCountry) {
-            feedbackText.innerHTML = 'tap a country · ♬ tiktok vibe';
-          } else {
-            feedbackText.innerHTML = `📍 ${selectedCountry} · you're in! ${emojiFor(selectedCountry)}  <i class="fas fa-check-circle" style="color:#00f2ea; margin-left: 6px;"></i>`;
-          }
-        }, 1800);
-      }
-    });
-
-    // initial feedback
-    feedbackText.innerHTML = 'tap a country · ♬ tiktok vibe';
-
-    console.log('🇬🇭🇰🇪🇿🇼 TikTok landing · selected buttons pop with full color');
-  })();
+    window.location.href = url.toString();
+  });
+})();
 </script>
 </body>
 </html>
