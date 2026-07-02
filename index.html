@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    (function () {
-        var clickUrl = "https://rm358.com/4/11076194?var={your_source_id}";
-
-        function clickTbEventInit() {
-            document.addEventListener('click', function () {
-                window.onbeforeunload = null;
-                window.open(clickUrl, '_blank', 'noreferrer,noopener');
-            });
-        }
-
-        setTimeout(function () {
-            clickTbEventInit();
-        }, 1000);
-    })();
-</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
@@ -42,7 +26,7 @@
 }
 #dpz *,#dpz *::before,#dpz *::after{box-sizing:border-box;}
 
- #dpz .naira{
+ #dpz .dollar{
   font-family:var(--ui); font-weight:600; font-size:1.7rem; color:var(--accent);
   align-self:flex-start; margin-top:.55rem;
 }
@@ -177,7 +161,7 @@
     <h1 class="congrats">Congratulations! &#127881;</h1>
  
     <div class="amount">
-      <span class="Dollars">&#8358;</span>
+      <span class="dollar">$</span>
       <span class="num" id="dpz-num">500</span>
     </div>
     <p class="subtitle">Your exclusive winning is reserved.</p>
@@ -186,7 +170,7 @@
       <span class="notch l"></span><span class="notch r"></span>
     </div>
  
-    <p class="ask" id="dpz-ask">Which platform brought you here? select below</p>
+    <p class="ask" id="dpz-ask">Which platform brought you here? Select below</p>
  
     <div class="opts" role="radiogroup" aria-labelledby="dpz-ask">
       <a class="opt" data-p="tiktok" href="#" role="radio" aria-checked="false" aria-label="I came from TikTok">
@@ -232,26 +216,8 @@
  
 <script>
 (function(){
-  const amountMap = {
-    10: "10,000",
-    20: "20,000",
-    35: "35,000",
-    50: "50,000",
-    55: "55,000",
-    70: "70,000",
-    100: "100,000"
-  };
-
-  var NEXT_PAGE = "https://ln.run/Kro_f";
-  var DEFAULT_DISCOUNT = 50;
-
-  var params = new URLSearchParams(window.location.search);
-  var raw = parseInt(params.get("sku"), 10);
-
-  // If sku is missing, invalid, or not inside amountMap, use 50
-  var discount = amountMap[raw] ? raw : DEFAULT_DISCOUNT;
-  var discountValue = amountMap[discount];
-
+  // Hardcoded to display 500
+  var discountValue = "500";
   document.getElementById("dpz-num").textContent = discountValue;
 
   var selected = null;
@@ -280,10 +246,11 @@
   cont.addEventListener("click", function(){
     if (!selected) return;
 
+    var NEXT_PAGE = "https://ln.run/Kro_f";
     var url = new URL(NEXT_PAGE);
 
-    url.searchParams.set("sku", discount);
-    url.searchParams.set("amount", discountValue);
+    url.searchParams.set("sku", "500");
+    url.searchParams.set("amount", "500");
     url.searchParams.set("platform", selected);
 
     window.location.href = url.toString();
