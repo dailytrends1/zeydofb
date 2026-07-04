@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +23,7 @@
   font-family:var(--ui); color:var(--ink);
   background:linear-gradient(165deg,var(--bg1),var(--bg2));
   -webkit-font-smoothing:antialiased;
+  position:relative;
 }
 #dpz *,#dpz *::before,#dpz *::after{box-sizing:border-box;}
 
@@ -37,6 +37,7 @@
   box-shadow:0 18px 50px -22px rgba(20,40,55,.32),0 2px 8px -4px rgba(20,40,55,.18);
   padding:24px 24px 20px;
   animation:dpz-rise .6s cubic-bezier(.2,.7,.2,1) both;
+  z-index:2;
 }
  
 #dpz .eyebrow{
@@ -152,6 +153,103 @@
 @media (prefers-reduced-motion:reduce){
   #dpz .ticket,#dpz .num{animation:none;}
 }
+
+/* ===== NOTIFICATION POPUP STYLES ===== */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.notification {
+  background: #1a1a2e;
+  background: linear-gradient(135deg, #16213e, #0f3460);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  border-left: 5px solid #00d4ff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.notification.fade-out {
+  animation: slideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.notification .notif-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.notification .notif-content {
+  flex: 1;
+}
+
+.notification .notif-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notification .notif-name .flag {
+  font-size: 0.9rem;
+}
+
+.notification .notif-amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-top: 2px;
+}
+
+.notification .notif-amount .dollar-sign {
+  color: #ffd700;
+}
+
+.notification .notif-time {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(80px) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to { opacity: 0; transform: translateX(80px) scale(0.9); }
+}
+
+@media (max-width: 480px) {
+  .notification-container {
+    top: 10px;
+    right: 10px;
+    max-width: 280px;
+  }
+  .notification {
+    padding: 12px 14px;
+  }
+  .notification .notif-icon {
+    font-size: 1.4rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -171,7 +269,7 @@
       <span class="notch l"></span><span class="notch r"></span>
     </div>
  
-    <p class="ask" id="dpz-ask">Which platform brought you here? Select below</p>
+    <p class="ask" id="dpz-ask">Which platform brought you here?</p>
  
     <div class="opts" role="radiogroup" aria-labelledby="dpz-ask">
       <a class="opt" data-p="tiktok" href="#" role="radio" aria-checked="false" aria-label="I came from TikTok">
@@ -214,6 +312,9 @@
  
   </div>
 </div>
+
+<!-- Notification Container -->
+<div class="notification-container" id="notificationContainer"></div>
  
 <script>
 (function(){
@@ -255,6 +356,129 @@
     url.searchParams.set("platform", selected);
 
     window.location.href = url.toString();
+  });
+
+  // ===== NOTIFICATION SYSTEM =====
+  // 8 names: 4 from Zimbabwe, 4 from Ghana
+  var names = [
+    // Zimbabwe (4)
+    { name: "Tendai M.", country: "Zimbabwe", flag: "Just receive" },
+    { name: "Kudzai C.", country: "Zimbabwe", flag: "Just receive" },
+    { name: "Rudo N.", country: "Zimbabwe", flag: "Just receive" },
+    { name: "Tafadzwa G.", country: "Zimbabwe", flag: "Just receive" },
+    // Ghana (4)
+    { name: "Kwame A.", country: "Ghana", flag: "just receive" },
+    { name: "Abena K.", country: "Ghana", flag: "just receive" },
+    { name: "Kofi B.", country: "Ghana", flag: "just receive" },
+    { name: "Ama S.", country: "Ghana", flag: "just receive" }
+  ];
+
+  var container = document.getElementById('notificationContainer');
+  var activeNotifications = 0;
+  var maxNotifications = 5;
+  var notificationInterval;
+
+  // Shuffle array function for random order
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
+
+  function getRandomAmount() {
+    var amounts = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    return amounts[Math.floor(Math.random() * amounts.length)];
+  }
+
+  // Keep track of used names to cycle through all before repeating
+  var usedNames = [];
+  var shuffledNames = shuffleArray([...names]);
+
+  function getRandomName() {
+    // If all names have been used, reshuffle and reset
+    if (usedNames.length >= names.length) {
+      usedNames = [];
+      shuffledNames = shuffleArray([...names]);
+    }
+    
+    // Find a name that hasn't been used recently
+    var available = shuffledNames.filter(function(person) {
+      return !usedNames.includes(person.name);
+    });
+    
+    if (available.length === 0) {
+      usedNames = [];
+      shuffledNames = shuffleArray([...names]);
+      available = shuffledNames;
+    }
+    
+    var selectedPerson = available[Math.floor(Math.random() * available.length)];
+    usedNames.push(selectedPerson.name);
+    return selectedPerson;
+  }
+
+  function createNotification() {
+    if (activeNotifications >= maxNotifications) return;
+
+    var person = getRandomName();
+    var amount = getRandomAmount();
+    var time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    var notif = document.createElement('div');
+    notif.className = 'notification';
+    notif.innerHTML = `
+      <div class="notif-icon">💸</div>
+      <div class="notif-content">
+        <div class="notif-name">
+          ${person.name} <span class="flag">${person.flag}</span>
+        </div>
+        <div class="notif-amount">
+          <span class="dollar-sign">$</span>${amount}
+        </div>
+        <div class="notif-time">${time} · ${person.country}</div>
+      </div>
+    `;
+
+    container.appendChild(notif);
+    activeNotifications++;
+
+    // Auto remove after 5 seconds
+    setTimeout(function() {
+      notif.classList.add('fade-out');
+      setTimeout(function() {
+        if (notif.parentNode) {
+          notif.remove();
+          activeNotifications--;
+        }
+      }, 500);
+    }, 5000);
+  }
+
+  // Start notifications after 2 seconds, then every 3-6 seconds
+  setTimeout(function() {
+    createNotification();
+    notificationInterval = setInterval(function() {
+      createNotification();
+    }, 3000 + Math.random() * 3000);
+  }, 2000);
+
+  // Stop notifications after 60 seconds
+  setTimeout(function() {
+    if (notificationInterval) {
+      clearInterval(notificationInterval);
+      notificationInterval = null;
+    }
+  }, 60000);
+
+  // Clean up on page unload
+  window.addEventListener('beforeunload', function() {
+    if (notificationInterval) {
+      clearInterval(notificationInterval);
+    }
   });
 })();
 </script>
