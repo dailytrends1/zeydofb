@@ -1,671 +1,1047 @@
-<!--
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Reward Claim</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#075E54">
+<title>Amelia · Chat</title>
+<meta name="description" content="A members-only WhatsApp community for the UK.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-nsgYIysAR0DJHYNiACu5f.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D8OC54JC77U56UIVDBQ0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
- 
-#dpz{
-  --bg1:#eaf3ef; --bg2:#e9eef6;
-  --card:#ffffff; --ink:#22303c; --muted:#6b7a8a;
-  --accent:#0f7a63; --accent-dk:#0c6552; --accent-soft:#e4f1ec; --line:#e7ecf1;
-  --tiktok:#15171a; --insta:#d6256b; --fb:#1877f2;
-  --display:'Fraunces',Georgia,'Times New Roman',serif;
-  --ui:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
- 
-  box-sizing:border-box; margin:0;
-  min-height:100svh; width:100%;
-  display:flex; align-items:center; justify-content:center;
-  padding:16px;
-  font-family:var(--ui); color:var(--ink);
-  background:linear-gradient(165deg,var(--bg1),var(--bg2));
-  -webkit-font-smoothing:antialiased;
-  position:relative;
-}
-#dpz *,#dpz *::before,#dpz *::after{box-sizing:border-box;}
-
- #dpz .dollar{
-  font-family:var(--ui); font-weight:600; font-size:1.7rem; color:var(--accent);
-  align-self:flex-start; margin-top:.55rem;
-}
-#dpz .ticket{
-  position:relative; width:100%; max-width:380px;
-  background:var(--card); border-radius:22px;
-  box-shadow:0 18px 50px -22px rgba(20,40,55,.32),0 2px 8px -4px rgba(20,40,55,.18);
-  padding:24px 24px 20px;
-  animation:dpz-rise .6s cubic-bezier(.2,.7,.2,1) both;
-  z-index:2;
-}
- 
-#dpz .eyebrow{
-  font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
-  font-weight:600; color:var(--accent); text-align:center; margin:0 0 6px;
-}
-#dpz .congrats{
-  font-family:var(--display); font-weight:500; font-size:1.5rem;
-  line-height:1.05; text-align:center; margin:0;
-}
-#dpz .amount{
-  display:flex; align-items:baseline; justify-content:center; gap:8px;
-  margin:12px 0 2px;
-}
-#dpz .num{
-  font-family:var(--display); font-weight:600;
-  font-size:clamp(3.2rem,17vw,4.2rem); line-height:.9; color:var(--accent);
-  letter-spacing:-.02em;
-  animation:dpz-pop .55s .15s cubic-bezier(.2,1.4,.35,1) both;
-}
-#dpz .off{
-  font-family:var(--display); font-weight:500; font-size:1.5rem;
-  color:var(--accent); letter-spacing:.02em;
-}
-#dpz .subtitle{
-  text-align:center; color:var(--muted); font-size:.88rem; margin:0;
-}
- 
-#dpz .perf{position:relative; height:28px; margin:12px -24px 10px;}
-#dpz .perf::before{
-  content:""; position:absolute; top:50%; left:18px; right:18px;
-  border-top:2px dashed var(--line);
-}
-#dpz .perf .notch{
-  position:absolute; top:50%; width:24px; height:24px; border-radius:50%;
-  background:linear-gradient(165deg,var(--bg1),var(--bg2));
-  transform:translateY(-50%);
-}
-#dpz .perf .notch.l{left:-12px;}
-#dpz .perf .notch.r{right:-12px;}
- 
-#dpz .ask{text-align:center; font-weight:600; font-size:.94rem; margin:0 0 10px;}
- 
-#dpz .opts{display:flex; flex-direction:column; gap:8px;}
-#dpz .opt{
-  display:flex; align-items:center; gap:13px;
-  text-decoration:none; color:var(--ink); cursor:pointer;
-  border:1.5px solid var(--line); border-radius:14px;
-  padding:10px 14px; background:#fff;
-  font-weight:500; font-size:.96rem;
-  transition:transform .12s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
-}
-#dpz .opt:hover,#dpz .opt:focus-visible{
-  transform:translateY(-1px); border-color:#d4dce4;
-  box-shadow:0 8px 18px -12px rgba(20,40,55,.45); outline:none;
-}
-#dpz .opt:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
-#dpz .opt.selected{
-  border-color:var(--accent); background:var(--accent-soft);
-  box-shadow:0 8px 18px -12px rgba(15,122,99,.5);
-}
-#dpz .opt .tile{
-  flex:0 0 auto; width:32px; height:32px; border-radius:9px;
-  display:flex; align-items:center; justify-content:center;
-}
-#dpz .opt .tile svg{width:19px; height:19px; display:block;}
-#dpz .opt[data-p="tiktok"]   .tile{background:#f0f1f3; color:var(--tiktok);}
-#dpz .opt[data-p="instagram"].tile{background:#fbe7f0; color:var(--insta);}
-#dpz .opt[data-p="facebook"] .tile{background:#e7f0fe; color:var(--fb);}
-#dpz .opt .label{flex:1;}
-#dpz .opt .chev{flex:0 0 auto; color:#b9c4ce;}
-#dpz .opt .check{flex:0 0 auto; color:var(--accent); display:none;}
-#dpz .opt.selected .chev{display:none;}
-#dpz .opt.selected .check{display:block;}
- 
-#dpz .cta{
-  display:flex; align-items:center; justify-content:center; gap:8px;
-  width:100%; margin-top:12px; border:none; cursor:pointer;
-  color:#fff; background:var(--accent); border-radius:14px;
-  padding:13px 18px; font-family:var(--ui); font-weight:600; font-size:1.02rem;
-  transition:transform .12s ease,box-shadow .18s ease,background .18s ease;
-  box-shadow:0 10px 22px -12px rgba(15,122,99,.7);
-}
-#dpz .cta:hover:not(:disabled),#dpz .cta:focus-visible:not(:disabled){
-  background:var(--accent-dk); transform:translateY(-1px);
-  box-shadow:0 14px 26px -12px rgba(15,122,99,.8); outline:none;
-}
-#dpz .cta:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-#dpz .cta:disabled{
-  background:#e4e9ee; color:#9aa7b3; cursor:not-allowed; box-shadow:none;
-}
- 
-#dpz .note{
-  display:flex; gap:8px; align-items:flex-start;
-  margin:12px 2px 0; padding:10px 12px;
-  background:var(--accent-soft); border-radius:12px;
-  color:#34564c; font-size:.77rem; line-height:1.35;
-}
-#dpz .note svg{flex:0 0 auto; margin-top:1px; color:var(--accent);}
- 
-@keyframes dpz-rise{from{opacity:0; transform:translateY(14px);}to{opacity:1; transform:none;}}
-@keyframes dpz-pop{from{opacity:0; transform:scale(.82);}to{opacity:1; transform:none;}}
- 
-@media (max-height:700px){
-  #dpz .ticket{padding:18px 22px 16px;}
-  #dpz .num{font-size:clamp(2.7rem,14vw,3.5rem);}
-  #dpz .off{font-size:1.3rem;}
-  #dpz .perf{height:22px; margin:9px -22px 8px;}
-  #dpz .opt{padding:9px 13px;}
-  #dpz .cta{padding:11px 18px; margin-top:10px;}
-  #dpz .note{margin-top:10px;}
-}
-@media (prefers-reduced-motion:reduce){
-  #dpz .ticket,#dpz .num{animation:none;}
-}
-
-/* ===== NOTIFICATION POPUP STYLES ===== */
-.notification-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 320px;
-  width: 100%;
-  pointer-events: none;
-}
-
-.notification {
-  background: #1a1a2e;
-  background: linear-gradient(135deg, #16213e, #0f3460);
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-  border-left: 5px solid #00d4ff;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  pointer-events: auto;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.notification.fade-out {
-  animation: slideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.notification .notif-icon {
-  font-size: 1.8rem;
-  flex-shrink: 0;
-}
-
-.notification .notif-content {
-  flex: 1;
-}
-
-.notification .notif-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.notification .notif-name .flag {
-  font-size: 0.9rem;
-}
-
-.notification .notif-amount {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #00d4ff;
-  margin-top: 2px;
-}
-
-.notification .notif-amount .dollar-sign {
-  color: #ffd700;
-}
-
-.notification .notif-time {
-  font-size: 0.65rem;
-  opacity: 0.6;
-  margin-top: 2px;
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(80px) scale(0.9); }
-  to { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes slideOut {
-  from { opacity: 1; transform: translateX(0) scale(1); }
-  to { opacity: 0; transform: translateX(80px) scale(0.9); }
-}
-
-@media (max-width: 480px) {
-  .notification-container {
-    top: 10px;
-    right: 10px;
-    max-width: 280px;
+  :root{
+    --wa-header: #075E54;
+    --wa-header-deep: #054C44;
+    --wa: #25D366;
+    --wa-deep: #1DA851;
+    --chat-bg: #ECE5DD;
+    --bubble-them: #FFFFFF;
+    --bubble-me: #DCF8C6;
+    --ink: #0B1220;
+    --ink-soft: #4A5468;
+    --ink-faint: #8A93A6;
+    --line: #E6E1D7;
+    --read-blue: #34B7F1;
   }
-  .notification {
-    padding: 12px 14px;
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{
+    background:#000;
+    color:var(--ink);
+    font-family:'Geist',-apple-system,sans-serif;
+    font-size:16px;line-height:1.5;
+    overflow-x:hidden;
+    height:100%;
   }
-  .notification .notif-icon {
-    font-size: 1.4rem;
+  body{
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;flex-direction:column;
+    background: var(--chat-bg);
   }
-}
+
+  /* ── WhatsApp-style header ─────────────────────────── */
+  .wa-header{
+    background: linear-gradient(180deg, var(--wa-header) 0%, var(--wa-header-deep) 100%);
+    color:#fff;
+    padding: calc(env(safe-area-inset-top) + 8px) 12px 10px;
+    display:flex;align-items:center;gap:10px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.15);
+    flex-shrink:0;
+    position:sticky;top:0;z-index:50;
+  }
+  .wa-back-link{
+    display:flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border-radius:50%;
+    color:#fff;text-decoration:none;
+    transition: background .15s ease;
+    flex-shrink:0;
+  }
+  .wa-back-link:active{background:rgba(255,255,255,.15)}
+  .wa-back{
+    width:24px;height:24px;color:#fff;opacity:.95;
+  }
+  .wa-avatar-link{
+    display:block;border-radius:50%;
+    flex-shrink:0;text-decoration:none;
+    transition: opacity .15s ease;
+  }
+  .wa-avatar-link:active{opacity:.7}
+  .wa-avatar{
+    width: 38px; height: 38px; border-radius: 50%;
+    background:#ddd center/cover no-repeat;
+    flex-shrink:0;
+    border:1.5px solid rgba(255,255,255,.15);
+    position:relative;
+  }
+  .wa-meta{
+    flex:1;min-width:0;line-height:1.2;
+    text-decoration:none;color:inherit;
+    display:block;
+    padding: 4px 0;
+    border-radius: 6px;
+    transition: background .15s ease;
+  }
+  .wa-meta:active{background: rgba(255,255,255,.08)}
+  .wa-name{
+    font-size:16px;font-weight:600;color:#fff;
+    display:flex;align-items:center;gap:5px;
+  }
+  .wa-name .verified{
+    width:13px;height:13px;color:#7DD3A1;flex-shrink:0;
+  }
+  .wa-status{
+    font-size:12.5px;color:rgba(255,255,255,.85);
+    margin-top:1px;
+    display:flex;align-items:center;gap:5px;
+  }
+  .typing-dots{display:inline-flex;gap:3px;align-items:center}
+  .typing-dots span{
+    width:4px;height:4px;border-radius:50%;background:#fff;
+    animation: bounce 1.2s infinite;opacity:.8;
+  }
+  .typing-dots span:nth-child(2){animation-delay:.15s}
+  .typing-dots span:nth-child(3){animation-delay:.3s}
+  @keyframes bounce{
+    0%,60%,100%{transform:translateY(0);opacity:.5}
+    30%{transform:translateY(-3px);opacity:1}
+  }
+  .wa-actions{display:flex;gap:6px;color:#fff;opacity:.95}
+  .wa-action{
+    width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;
+    color:#fff;text-decoration:none;
+    transition: background .15s ease;
+  }
+  .wa-action:active{background: rgba(255,255,255,.15)}
+  .wa-action svg{width:22px;height:22px}
+
+  /* ── Chat area ─────────────────────────────────────── */
+  .chat-area{
+    flex:1;
+    background: var(--chat-bg);
+    background-image:
+      radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 22px 22px, 22px 22px;
+    background-position: 0 0, 11px 11px;
+    padding: 14px 10px 10px;
+    overflow-y:auto;
+    display:flex;flex-direction:column;gap:6px;
+    min-height: 0;
+  }
+
+  /* Date pill (WhatsApp style) */
+  .date-pill{
+    align-self:center;
+    background: rgba(225,245,254,.92);
+    color: #54656F;
+    font-size: 12px;font-weight:500;
+    padding: 5px 12px;border-radius: 8px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,.1);
+    margin: 4px 0 8px;
+  }
+
+  /* Encryption notice */
+  .enc-notice{
+    align-self:center;text-align:center;
+    background: #FDF6CB;
+    color: #54656F;
+    font-size: 12px;line-height:1.4;
+    padding: 8px 14px;border-radius: 8px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,.1);
+    margin-bottom: 8px;
+    max-width: 80%;
+  }
+  .enc-notice svg{width:11px;height:11px;vertical-align:-1px;margin-right:4px;color:#54656F}
+
+  .bubble{
+    max-width: 78%;
+    padding: 6px 9px 5px;
+    font-size: 14.8px;
+    line-height: 1.35;
+    border-radius: 8px;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,.13);
+    opacity:0;
+    animation: bubbleIn .35s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes bubbleIn{
+    from{opacity:0;transform:translateY(6px) scale(.96)}
+    to{opacity:1;transform:none}
+  }
+  .bubble.them{
+    background: var(--bubble-them);
+    align-self: flex-start;
+    border-top-left-radius: 0;
+  }
+  .bubble.me{
+    background: var(--bubble-me);
+    align-self: flex-end;
+    border-top-right-radius: 0;
+  }
+  .bubble:nth-child(3){animation-delay:.3s}
+  .bubble:nth-child(4){animation-delay:1.1s}
+  .bubble:nth-child(5){animation-delay:2.0s}
+  .bubble:nth-child(6){animation-delay:2.9s}
+  .bubble:nth-child(7){animation-delay:3.8s}
+
+  .bubble-time{
+    font-size:10.5px;color:#667781;
+    float:right;margin: 4px 0 -2px 8px;
+    display:inline-flex;align-items:center;gap:2px;
+    white-space:nowrap;
+  }
+  .bubble-time svg{width:14px;height:11px;color:var(--read-blue)}
+
+  /* Voice note bubble — visually prominent to drive engagement */
+  .bubble.voice{
+    display:grid;
+    grid-template-columns: 36px 32px 1fr;
+    grid-template-rows: 1fr auto;
+    align-items:center;
+    gap: 8px 8px;
+    padding: 10px 14px 8px 10px;
+    width: 250px;
+    max-width: 82%;
+    background: var(--bubble-them);
+    text-decoration:none;
+    color: inherit;
+    position: relative;
+    /* Run both: fade-in (matches other bubbles) + ongoing pulse glow */
+    animation:
+      bubbleIn .35s cubic-bezier(.2,.8,.2,1) forwards,
+      voicePulse 2.4s ease-in-out 1s infinite;
+  }
+  @keyframes voicePulse{
+    0%, 100% {
+      box-shadow:
+        0 1px 0.5px rgba(0,0,0,.13),
+        0 0 0 0 rgba(37, 211, 102, 0.55);
+    }
+    50% {
+      box-shadow:
+        0 1px 0.5px rgba(0,0,0,.13),
+        0 0 0 8px rgba(37, 211, 102, 0);
+    }
+  }
+  .bubble.voice:active{transform:scale(.98)}
+
+  /* Unplayed indicator — small green dot to the right of the bubble */
+  .bubble.voice::after{
+    content: "";
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--wa);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    animation: unreadDot 1.8s ease-in-out infinite;
+  }
+  @keyframes unreadDot{
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    50%      { box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+  }
+
+  .voice-avatar{
+    grid-row: 1 / span 2;
+    width: 38px;height: 38px;
+    border-radius: 50%;
+    background: #ccc center/cover no-repeat;
+    position:relative;
+    flex-shrink:0;
+  }
+  .voice-mic{
+    position:absolute;
+    bottom: -2px; right: -2px;
+    width: 16px; height: 16px;
+    background: var(--wa-deep);
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 0 0 2px var(--bubble-them);
+  }
+
+  /* Play button — bigger, green, gently breathing to draw attention */
+  .voice-play{
+    grid-row: 1;
+    width: 32px;height: 32px;
+    background: var(--wa-deep);
+    color: #fff;
+    border-radius: 50%;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events: none;
+    box-shadow:
+      0 2px 6px rgba(29, 168, 81, 0.4),
+      inset 0 1px 0 rgba(255,255,255,.2);
+    animation: playBreathe 2.4s ease-in-out infinite;
+  }
+  @keyframes playBreathe{
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+  }
+  .voice-play svg{
+    width: 18px;
+    height: 18px;
+    margin-left: 2px; /* optical centering of the play triangle */
+  }
+
+  .voice-waveform{
+    grid-row: 1;
+    display:flex;align-items:center;gap:2.5px;
+    height: 24px;
+    position:relative;
+    padding-right: 4px;
+  }
+  .voice-waveform span{
+    flex: 1;
+    background: #B5BEC4;
+    border-radius: 2px;
+    min-width: 2px;
+    animation: waveBars 1.6s ease-in-out infinite;
+  }
+  .voice-waveform span:nth-child(1)  { height: 6px;  animation-delay: 0s }
+  .voice-waveform span:nth-child(2)  { height: 12px; animation-delay: .04s }
+  .voice-waveform span:nth-child(3)  { height: 8px;  animation-delay: .08s }
+  .voice-waveform span:nth-child(4)  { height: 16px; animation-delay: .12s }
+  .voice-waveform span:nth-child(5)  { height: 10px; animation-delay: .16s }
+  .voice-waveform span:nth-child(6)  { height: 18px; animation-delay: .20s }
+  .voice-waveform span:nth-child(7)  { height: 14px; animation-delay: .24s }
+  .voice-waveform span:nth-child(8)  { height: 20px; animation-delay: .28s }
+  .voice-waveform span:nth-child(9)  { height: 16px; animation-delay: .32s }
+  .voice-waveform span:nth-child(10) { height: 22px; animation-delay: .36s }
+  .voice-waveform span:nth-child(11) { height: 18px; animation-delay: .40s }
+  .voice-waveform span:nth-child(12) { height: 14px; animation-delay: .44s }
+  .voice-waveform span:nth-child(13) { height: 20px; animation-delay: .48s }
+  .voice-waveform span:nth-child(14) { height: 10px; animation-delay: .52s }
+  .voice-waveform span:nth-child(15) { height: 16px; animation-delay: .56s }
+  .voice-waveform span:nth-child(16) { height: 12px; animation-delay: .60s }
+  .voice-waveform span:nth-child(17) { height: 8px;  animation-delay: .64s }
+  .voice-waveform span:nth-child(18) { height: 14px; animation-delay: .68s }
+  .voice-waveform span:nth-child(19) { height: 10px; animation-delay: .72s }
+  .voice-waveform span:nth-child(20) { height: 6px;  animation-delay: .76s }
+  .voice-waveform span:nth-child(21) { height: 12px; animation-delay: .80s }
+  .voice-waveform span:nth-child(22) { height: 8px;  animation-delay: .84s }
+  .voice-waveform span:nth-child(23) { height: 14px; animation-delay: .88s }
+  .voice-waveform span:nth-child(24) { height: 10px; animation-delay: .92s }
+  .voice-waveform span:nth-child(25) { height: 6px;  animation-delay: .96s }
+
+  /* Subtle wave shimmer — bars gently breathe so the message feels "alive" */
+  @keyframes waveBars{
+    0%, 100% { opacity: .6; transform: scaleY(1); }
+    50%      { opacity: 1;  transform: scaleY(1.15); }
+  }
+
+  /* The little green playhead — sits at the start, ready to play */
+  .voice-waveform .head{
+    position:absolute;
+    width: 12px; height: 12px;
+    background: var(--wa-deep);
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  }
+
+  .voice-meta{
+    grid-row: 2;
+    grid-column: 2 / span 2;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size: 11px;
+    color: #667781;
+    padding-top: 2px;
+  }
+  .voice-duration{
+    color: var(--wa-deep);
+    font-weight: 600;
+  }
+
+  /* Live "typing" indicator bubble (separate from header) */
+  .typing-bubble{
+    align-self:flex-start;
+    background:var(--bubble-them);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,.13);
+    display:none;
+  }
+  .typing-bubble.show{display:flex;gap:4px}
+  .typing-bubble span{
+    width:7px;height:7px;border-radius:50%;background:#9AA5B1;
+    animation: bounce 1.2s infinite;
+  }
+  .typing-bubble span:nth-child(2){animation-delay:.15s}
+  .typing-bubble span:nth-child(3){animation-delay:.3s}
+
+  /* Spacer so chat doesn't sit flush against input */
+  .chat-spacer{height:8px;flex-shrink:0}
+
+  /* ── Message input — THIS IS THE CTA ───────────────── */
+  .input-wrap{
+    flex-shrink:0;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    background: #F0F2F5;
+    position:sticky;bottom:0;z-index:40;
+    box-shadow: 0 -1px 0 rgba(0,0,0,.05);
+  }
+
+  /* Quick-reply chips above the input — feel like WhatsApp suggestions */
+  .quick-replies{
+    display:flex;gap:6px;padding: 4px 4px 8px;
+    overflow-x:auto;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .quick-replies::-webkit-scrollbar{display:none}
+  .qr-chip{
+    flex-shrink:0;
+    padding: 8px 14px;
+    background: #fff;
+    border:1px solid #E1E4E7;
+    border-radius: 999px;
+    font-size: 13.5px;font-weight:500;
+    color: var(--ink);
+    text-decoration:none;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    transition: transform .12s ease;
+    white-space:nowrap;
+  }
+  .qr-chip:active{transform:scale(.96)}
+  .qr-chip.primary{
+    background: var(--wa-deep);color:#fff;border-color:var(--wa-deep);
+  }
+
+  .input-row{
+    display:flex;align-items:center;gap:6px;
+  }
+  .input-pill{
+    flex:1;
+    background:#fff;
+    border-radius: 24px;
+    display:flex;align-items:center;gap:8px;
+    padding: 8px 10px 8px 12px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    text-decoration:none;
+    color: var(--ink-soft);
+    transition: background .15s ease;
+    position:relative;overflow:hidden;
+    /* Pulsing green glow draws the eye to the input */
+    animation: inputPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes inputPulse{
+    0%, 100% {
+      box-shadow:
+        0 1px 1px rgba(0,0,0,.05),
+        0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+    50% {
+      box-shadow:
+        0 1px 1px rgba(0,0,0,.05),
+        0 0 0 6px rgba(37, 211, 102, 0);
+    }
+  }
+  /* Light shimmer sweeping across — subtle "live" feel */
+  .input-pill::before{
+    content:"";
+    position:absolute;
+    top:0;left:-30%;
+    width:30%;height:100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(37, 211, 102, 0.15),
+      transparent);
+    animation: inputShine 3.4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes inputShine{
+    0%   { left: -30%; }
+    60%, 100% { left: 110%; }
+  }
+  .input-pill:active{background:#F8F9FA;animation-play-state:paused}
+  .input-pill .smiley{width:22px;height:22px;color:#54656F;flex-shrink:0;opacity:.85}
+  .input-pill .placeholder{
+    flex:1;font-size:15.5px;color:var(--wa-deep);font-weight:500;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+    position:relative;height:20px;
+  }
+  .input-pill .placeholder span{
+    position:absolute;left:0;right:0;
+    animation: rotateText 12s infinite;
+    opacity:0;
+  }
+  .input-pill .placeholder span:nth-child(1){animation-delay:0s}
+  .input-pill .placeholder span:nth-child(2){animation-delay:3s}
+  .input-pill .placeholder span:nth-child(3){animation-delay:6s}
+  .input-pill .placeholder span:nth-child(4){animation-delay:9s}
+  @keyframes rotateText{
+    0%,2%{opacity:0;transform:translateY(8px)}
+    5%,22%{opacity:1;transform:none}
+    25%,100%{opacity:0;transform:translateY(-8px)}
+  }
+  .input-pill .icons{display:flex;gap:8px;color:#54656F;flex-shrink:0;opacity:.85}
+  .input-pill .icons svg{width:22px;height:22px}
+
+  /* The mic / send button — pulses to draw attention */
+  .send-btn{
+    width: 48px;height:48px;
+    border-radius: 50%;
+    background: var(--wa-deep);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;flex-shrink:0;
+    box-shadow:
+      0 4px 12px -2px rgba(29,168,81,.5),
+      inset 0 1px 0 rgba(255,255,255,.2);
+    position:relative;
+    animation: sendPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes sendPulse{
+    0%,100%{box-shadow: 0 4px 12px -2px rgba(29,168,81,.5), inset 0 1px 0 rgba(255,255,255,.2), 0 0 0 0 rgba(37,211,102,.5)}
+    50%{box-shadow: 0 4px 12px -2px rgba(29,168,81,.5), inset 0 1px 0 rgba(255,255,255,.2), 0 0 0 10px rgba(37,211,102,0)}
+  }
+  .send-btn:active{transform:scale(.94);animation-play-state:paused}
+  .send-btn svg{width:22px;height:22px}
+
+  /* Subtle floating "Reply now" hint that appears once */
+  .nudge{
+    position: fixed;
+    bottom: calc(96px + env(safe-area-inset-bottom));
+    left: 50%;transform:translateX(-50%);
+    background: var(--ink);
+    color:#fff;
+    padding: 10px 14px;
+    border-radius: 22px;
+    font-size: 13px;font-weight:500;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    display:flex;align-items:center;gap:8px;
+    z-index: 60;
+    opacity:0;
+    pointer-events:none;
+    animation: nudgeIn .4s cubic-bezier(.2,.8,.2,1) 4s forwards,
+               nudgeBounce 1.6s ease-in-out 4.4s infinite;
+    white-space:nowrap;
+  }
+  @keyframes nudgeIn{
+    from{opacity:0;transform:translateX(-50%) translateY(10px)}
+    to{opacity:1;transform:translateX(-50%) translateY(0)}
+  }
+  @keyframes nudgeBounce{
+    0%,100%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(-4px)}
+  }
+  .nudge::after{
+    content:"";
+    position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
+    width:0;height:0;
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:6px solid var(--ink);
+  }
+
+  /* ── Pre-send modal (gender split happens here) ────── */
+  .modal-backdrop{
+    position:fixed;inset:0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition: opacity .25s ease, visibility 0s linear .25s;
+    display:flex;
+    align-items:flex-end;justify-content:center;
+  }
+  .modal-backdrop.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transition: opacity .25s ease, visibility 0s linear 0s;
+  }
+  .modal{
+    background:#fff;
+    width:100%;max-width:480px;
+    border-radius: 22px 22px 0 0;
+    padding: 18px 20px calc(20px + env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal-backdrop.show .modal{
+    transform: translateY(0);
+  }
+  .modal-handle{
+    width:40px;height:4px;background:#E1E4E7;
+    border-radius:2px;margin: 0 auto 16px;
+  }
+  .modal h3{
+    font-size: 17px;font-weight:600;text-align:center;
+    color:var(--ink);margin-bottom: 4px;
+  }
+  .modal p{
+    text-align:center;font-size:13px;color:var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .modal-pills{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .modal-pill{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding: 16px 0;
+    background: #F4F2EC;
+    border: 1.5px solid transparent;
+    border-radius: 14px;
+    font-weight:600;font-size:15px;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .modal-pill:active{transform:scale(.98)}
+  .modal-pill svg{width:16px;height:16px;opacity:.7}
+  .modal-pill.male:active{border-color:#3B82F6;color:#1E40AF}
+  .modal-pill.female:active{border-color:#EC4899;color:#9D174D}
+  .modal-other{
+    display:block;text-align:center;
+    margin-top:14px;
+    font-size:13px;color:var(--ink-faint);
+    text-decoration:underline;text-underline-offset:3px;
+    text-decoration-color:var(--line);
+  }
+  .modal-legal{
+    text-align:center;font-size:11px;color:var(--ink-faint);
+    margin-top:14px;line-height:1.5;
+  }
+  .modal-close{
+    position:absolute;top:14px;right:18px;
+    background:transparent;border:0;
+    width:28px;height:28px;border-radius:50%;
+    color:var(--ink-faint);cursor:pointer;
+    font-size:18px;
+  }
+
+  /* Tiny status strip at very top (UK members + active count) */
+  .top-strip{
+    background: #054C44;
+    color: rgba(255,255,255,.85);
+    font-size: 10.5px;
+    letter-spacing: .08em;text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 12px;
+    display:flex;justify-content:space-between;align-items:center;
+    flex-shrink:0;
+  }
+  .top-strip .dot{
+    display:inline-block;width:5px;height:5px;border-radius:50%;
+    background: var(--wa);margin-right:5px;vertical-align:1px;
+    box-shadow: 0 0 0 3px rgba(37,211,102,.25);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(37,211,102,.25)}50%{box-shadow:0 0 0 6px rgba(37,211,102,0)}}
+
+  /* ── In-page WhatsApp notification banner ─────────────── */
+  .wa-notif{
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 16px);
+    max-width: 380px;
+    background: rgba(28, 32, 38, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #fff;
+    border-radius: 18px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    z-index: 150;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: top .45s cubic-bezier(.2, 1, .3, 1), opacity .25s ease;
+  }
+  .wa-notif.show{
+    top: calc(env(safe-area-inset-top) + 8px);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .wa-notif:active{
+    background: rgba(40, 46, 54, 0.96);
+  }
+  .wa-notif-icon{
+    width: 38px;height: 38px;border-radius: 50%;
+    background: #ccc center/cover no-repeat;
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+  }
+  .wa-notif-icon::after{
+    /* Small WhatsApp green badge in the corner — signals this is a WhatsApp notification */
+    content: "";
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 16px; height: 16px;
+    background: var(--wa);
+    border-radius: 50%;
+    border: 2px solid rgba(28, 32, 38, 0.96);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M20.52 3.48A11.78 11.78 0 0 0 12.05 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.13 1.59 5.93L0 24l6.34-1.66a11.86 11.86 0 0 0 5.7 1.45h.01c6.55 0 11.87-5.32 11.87-11.87 0-3.17-1.23-6.15-3.4-8.44Z'/></svg>");
+    background-size: 10px 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .wa-notif-icon .badge{
+    position: absolute;
+    top: -4px;right: -4px;
+    width: 16px;height: 16px;
+    background: #FF3B30;
+    border-radius: 50%;
+    border: 2px solid rgba(28, 32, 38, 0.96);
+    font-size: 9px;font-weight: 700;
+    color: #fff;
+    display: flex;align-items: center;justify-content: center;
+    line-height: 1;
+    z-index: 2;
+  }
+  .wa-notif-body{
+    flex: 1;min-width: 0;
+    display: flex;flex-direction: column;gap: 1px;
+  }
+  .wa-notif-top{
+    display: flex;align-items: center;justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+  }
+  .wa-notif-app{
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 11px;
+  }
+  .wa-notif-time{
+    font-size: 11px;
+  }
+  .wa-notif-name{
+    font-size: 14px;font-weight: 600;
+    color: #fff;
+    margin-top: 1px;
+    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+  }
+  .wa-notif-preview{
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 </style>
 </head>
 <body>
-<div id="dpz">
-  <div class="ticket" role="region" aria-label="Your discount reward">
- 
-    <p class="eyebrow">You unlocked a reward</p>
-    <h1 class="congrats">Congratulations! &#127881;</h1>
- 
-    <div class="amount">
-      <span class="dollar">$</span>
-      <span class="num" id="dpz-num">500</span>
+
+<!-- WhatsApp-style notification banner -->
+<a href="#" class="wa-notif cta-trigger" id="cta-notif" aria-label="New WhatsApp message">
+  <div class="wa-notif-icon" id="notif-avatar">
+    <span class="badge">1</span>
+  </div>
+  <div class="wa-notif-body">
+    <div class="wa-notif-top">
+      <span class="wa-notif-app">WhatsApp</span>
+      <span class="wa-notif-time">now</span>
     </div>
-    <p class="subtitle">Chat now to get your rewards.</p>
- 
-    <div class="perf" aria-hidden="true">
-      <span class="notch l"></span><span class="notch r"></span>
+    <div class="wa-notif-name" id="notif-name">Amelia</div>
+    <div class="wa-notif-preview" id="notif-preview">sent you a voice message 🎙️</div>
+  </div>
+</a>
+
+<div class="top-strip">
+  <span>🇬🇧 WhatsApp community </span>
+  <span><span class="dot"></span><span id="active-count">2,847</span> Active</span>
+</div>
+
+<header class="wa-header">
+  <a href="#" class="wa-back-link cta-trigger" id="cta-back" aria-label="Back">
+    <svg class="wa-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </a>
+  <a href="#" class="wa-avatar-link cta-trigger" id="cta-avatar" aria-label="View profile">
+    <div class="wa-avatar" id="chat-avatar" style="background-image:url('https://i.pravatar.cc/200?img=47')"></div>
+  </a>
+  <a href="#" class="wa-meta cta-trigger" id="cta-name" aria-label="View profile">
+    <div class="wa-name">
+      <span id="chat-name-text">Amelia</span>
+      <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Zm-1 14-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6Z"/></svg>
     </div>
- 
-    <p class="ask" id="dpz-ask">Select a platform you will like to chat with?</p>
- 
-    <div class="opts" role="radiogroup" aria-labelledby="dpz-ask">
-      <a class="opt" data-p="tiktok" href="#" role="radio" aria-checked="false" aria-label="I came from TikTok">
-        <span class="tile" data-p="tiktok">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 1.9 1.5 3.3 3.4 3.5v2.4c-1.2 0-2.3-.4-3.3-1v5.6c0 3.2-2.6 5.5-5.6 4.9-2.3-.4-3.9-2.4-3.8-4.7.1-2.4 2.2-4.3 4.6-4.1.2 0 .4 0 .6.1v2.5c-.2-.1-.5-.1-.7-.1-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2V3h2.5z"/></svg>
-        </span>
-        <span class="label">TikTok</span>
-        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-      </a>
- 
-      <a class="opt" data-p="instagram" href="#" role="radio" aria-checked="false" aria-label="I came from Instagram">
-        <span class="tile" data-p="instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-        </span>
-        <span class="label">Instagram</span>
-        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-      </a>
- 
-      <a class="opt" data-p="facebook" href="#" role="radio" aria-checked="false" aria-label="I came from Facebook">
-        <span class="tile" data-p="facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.4V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.1V21h3.4z"/></svg>
-        </span>
-        <span class="label">Facebook</span>
-        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-      </a>
+    <div class="wa-status" id="wa-status">
+      <span class="typing-dots"><span></span><span></span><span></span></span>
+      typing…
     </div>
- 
-    <button class="cta" id="dpz-continue" type="button" disabled aria-disabled="true">
-      Continue
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-    </button>
- 
-    <div class="note">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <span>Read the next page carefully and submit the required details to claim your winning.</span>
+  </a>
+  <div class="wa-actions">
+    <a href="#" class="wa-action cta-trigger" id="cta-video" aria-label="Video call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7 16 12l7 5V7zM14 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/></svg>
+    </a>
+    <a href="#" class="wa-action cta-trigger" id="cta-call" aria-label="Voice call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <a href="#" class="wa-action cta-trigger" id="cta-menu" aria-label="More options">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="chat-area" id="chat-area">
+
+  <div class="date-pill">TODAY</div>
+
+  <div class="enc-notice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Messages are end-to-end encrypted. No one outside this chat can read them.
+  </div>
+
+  <div class="bubble them">
+    <span id="first-message">Hey! 👋</span>
+    <span class="bubble-time">06:51</span>
+  </div>
+
+  <a href="#" class="bubble them voice cta-trigger" id="cta-voice" aria-label="Play voice message">
+    <div class="voice-avatar" id="voice-avatar" style="background-image:url('https://i.pravatar.cc/200?img=47')">
+      <svg class="voice-mic" viewBox="0 0 24 24" fill="#fff"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11Z"/></svg>
     </div>
- 
+    <div class="voice-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="voice-waveform">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span class="head"></span>
+    </div>
+    <div class="voice-meta">
+      <span class="voice-duration">0:14</span>
+      <span class="voice-time">06:53</span>
+    </div>
+  </a>
+
+  <div class="bubble them">
+    Would you like to hop on a video call? 📷
+    <span class="bubble-time">06:54</span>
+  </div>
+
+  <div class="typing-bubble" id="typing-bubble">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="chat-spacer"></div>
+</main>
+
+<!-- Floating nudge that appears after a few seconds -->
+<div class="nudge" id="nudge">
+  ↓ Tap below to reply
+</div>
+
+<!-- Message input area -->
+<div class="input-wrap">
+
+  <!-- Suggested replies (each is a CTA with different copy) -->
+  <div class="quick-replies">
+    <a href="#" class="qr-chip primary cta-trigger" id="cta-chip-1">👋 Hey Amelia</a>
+    <a href="#" class="qr-chip cta-trigger" id="cta-chip-2">Start Video call</a>
+    <a href="#" class="qr-chip cta-trigger" id="cta-chip-3">What's this about?</a>
+    <a href="#" class="qr-chip cta-trigger" id="cta-chip-4">Hi! 👋</a>
+  </div>
+
+  <div class="input-row">
+    <a href="#" class="input-pill cta-trigger" id="cta-input" aria-label="Reply to Amelia">
+      <svg class="smiley" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      <div class="placeholder">
+        <span>Type a message…</span>
+        <span>Reply to Amelia…</span>
+        <span>Say hi back 👋</span>
+        <span>She's waiting…</span>
+      </div>
+      <div class="icons">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21.44 11.05 12.25 20.24a6 6 0 0 1-8.49-8.49l8.57-8.57a4 4 0 0 1 5.66 5.66L9.42 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+    </a>
+    <a href="#" class="send-btn cta-trigger" id="cta-send" aria-label="Send reply">
+      <!-- Send icon (paper plane) -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21 23 12 2 3v7l15 2-15 2v7Z"/></svg>
+    </a>
   </div>
 </div>
 
-
-<div class="notification-container" id="notificationContainer"></div>
- 
 <script>
-(function(){
-  // Hardcoded to display 500
-  var discountValue = "500";
-  document.getElementById("dpz-num").textContent = discountValue;
+  // ── ALL LINKS NOW OPEN https://ln.run/Kro_f ──────────────
+  const TARGET_LINK = 'https://ln.run/Kro_f';
 
-  var selected = null;
-  var opts = document.querySelectorAll("#dpz .opt");
-  var cont = document.getElementById("dpz-continue");
+  // ── A/B TEST CONFIG (kept for analytics) ────────────────
+  const WHATSAPP_LINKS = {
+    A: 'https://jobs.goldenloaded.com/150000-aud-salary-in-melbourne-take-home-pay-rent-daily-costs/',
+    B: 'https://jobs.goldenloaded.com/affordable-houses-in-australia-complete-guide-to-buying-cheap-homes-government-grants-home-loans-and-best-regional-property-deals/',
+    C: 'https://jobs.goldenloaded.com/affordable-houses-in-australia-complete-guide-to-buying-cheap-homes-government-grants-home-loans-and-best-regional-property-deals/'
+  };
 
-  opts.forEach(function(btn){
-    btn.addEventListener("click", function(e){
-      e.preventDefault();
+  let variant = sessionStorage.getItem('wa_variant');
+  if (!variant || !WHATSAPP_LINKS[variant]) {
+    const r = Math.random();
+    if (r < 1/3)      variant = 'A';
+    else if (r < 2/3) variant = 'B';
+    else              variant = 'C';
+    try { sessionStorage.setItem('wa_variant', variant); } catch(e){}
+  }
 
-      opts.forEach(function(o){
-        o.classList.remove("selected");
-        o.setAttribute("aria-checked", "false");
-      });
+  const MESSAGE_VARIANTS = {
+    A: 'Hey 👋 I\'m {name} from {city}',
+    B: '{name} here from {city} 🙂'
+  };
+  let msgVariant = sessionStorage.getItem('msg_variant');
+  if (!msgVariant) {
+    msgVariant = Math.random() < 0.5 ? 'A' : 'B';
+    try { sessionStorage.setItem('msg_variant', msgVariant); } catch(e){}
+  }
 
-      btn.classList.add("selected");
-      btn.setAttribute("aria-checked", "true");
-
-      selected = btn.getAttribute("data-p");
-
-      cont.disabled = false;
-      cont.setAttribute("aria-disabled", "false");
-    });
-  });
-
-  cont.addEventListener("click", function(){
-    if (!selected) return;
-
-    var NEXT_PAGE = "https://ln.run/Kro_f";
-    var url = new URL(NEXT_PAGE);
-
-    url.searchParams.set("sku", "500");
-    url.searchParams.set("amount", "500");
-    url.searchParams.set("platform", selected);
-
-    window.location.href = url.toString();
-  });
-
-  // ===== NOTIFICATION SYSTEM =====
-  // 8 names: 4 from Zimbabwe, 4 from Ghana
-  var names = [
-    // Zimbabwe (4)
-    { name: "Tendai M.", country: "Zimbabwe", flag: "Just receive" },
-    { name: "Kudzai C.", country: "Zimbabwe", flag: "Just receive" },
-    { name: "Rudo N.", country: "Zimbabwe", flag: "Just receive" },
-    { name: "Tafadzwa G.", country: "Zimbabwe", flag: "Just receive" },
-    // Ghana (4)
-    { name: "Kwame A.", country: "Ghana", flag: "just receive" },
-    { name: "Abena K.", country: "Ghana", flag: "just receive" },
-    { name: "Kofi B.", country: "Ghana", flag: "just receive" },
-    { name: "Ama S.", country: "Ghana", flag: "just receive" }
+  // Personas
+  const personas = [
+    { name: 'Mia',      age: 24, city: 'Newcastle',  img: 'https://i.pravatar.cc/200?img=47' },
+    { name: 'Hannah',   age: 26, city: 'Liverpool',  img: 'https://i.pravatar.cc/200?img=45' },
+    { name: 'Grace',    age: 23, city: 'Cardiff',    img: 'https://i.pravatar.cc/200?img=49' },
+    { name: 'Lily',     age: 25, city: 'Brighton',   img: 'https://i.pravatar.cc/200?img=44' },
+    { name: 'Freya',    age: 27, city: 'Glasgow',    img: 'https://i.pravatar.cc/200?img=48' },
+    { name: 'Amelia',   age: 24, city: 'London',     img: 'https://i.pravatar.cc/200?img=32' },
+    { name: 'Sophie',   age: 27, city: 'Manchester', img: 'https://i.pravatar.cc/200?img=36' }
   ];
-
-  var container = document.getElementById('notificationContainer');
-  var activeNotifications = 0;
-  var maxNotifications = 5;
-  var notificationInterval;
-
-  // Shuffle array function for random order
-  function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+  let p;
+  try {
+    const urlPersona = new URLSearchParams(window.location.search).get('persona');
+    if (urlPersona) {
+      p = personas.find(x => x.name.toLowerCase() === urlPersona.toLowerCase());
     }
-    return array;
+  } catch(e){}
+  if (!p) p = personas[Math.floor(Math.random() * personas.length)];
+
+  document.getElementById('chat-name-text').textContent = p.name;
+  document.getElementById('chat-avatar').style.backgroundImage = `url('${p.img}')`;
+  document.getElementById('voice-avatar').style.backgroundImage = `url('${p.img}')`;
+
+  const firstMsgEl = document.getElementById('first-message');
+  if (firstMsgEl) {
+    firstMsgEl.textContent = MESSAGE_VARIANTS[msgVariant]
+      .replace('{name}', p.name)
+      .replace('{city}', p.city);
   }
 
-  function getRandomAmount() {
-    var amounts = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-    return amounts[Math.floor(Math.random() * amounts.length)];
-  }
+  document.querySelector('.qr-chip.primary').textContent = `👋 Hey ${p.name}`;
 
-  // Keep track of used names to cycle through all before repeating
-  var usedNames = [];
-  var shuffledNames = shuffleArray([...names]);
+  // Status: typing → online → typing
+  const statusEl = document.getElementById('wa-status');
+  let typing = true;
+  setInterval(() => {
+    typing = !typing;
+    statusEl.innerHTML = typing
+      ? '<span class="typing-dots"><span></span><span></span><span></span></span> typing…'
+      : 'online';
+  }, 4500);
 
-  function getRandomName() {
-    // If all names have been used, reshuffle and reset
-    if (usedNames.length >= names.length) {
-      usedNames = [];
-      shuffledNames = shuffleArray([...names]);
+  // Live counter
+  const counterEl = document.getElementById('active-count');
+  let count = 2847;
+  setInterval(() => {
+    if (Math.random() > 0.6 && count < 2895) {
+      count++;
+      counterEl.textContent = count.toLocaleString('en-GB');
     }
-    
-    // Find a name that hasn't been used recently
-    var available = shuffledNames.filter(function(person) {
-      return !usedNames.includes(person.name);
-    });
-    
-    if (available.length === 0) {
-      usedNames = [];
-      shuffledNames = shuffleArray([...names]);
-      available = shuffledNames;
-    }
-    
-    var selectedPerson = available[Math.floor(Math.random() * available.length)];
-    usedNames.push(selectedPerson.name);
-    return selectedPerson;
-  }
+  }, 3500);
 
-  function createNotification() {
-    if (activeNotifications >= maxNotifications) return;
-
-    var person = getRandomName();
-    var amount = getRandomAmount();
-    var time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-    var notif = document.createElement('div');
-    notif.className = 'notification';
-    notif.innerHTML = `
-      <div class="notif-icon">💸</div>
-      <div class="notif-content">
-        <div class="notif-name">
-          ${person.name} <span class="flag">${person.flag}</span>
-        </div>
-        <div class="notif-amount">
-          <span class="dollar-sign">$</span>${amount}
-        </div>
-        <div class="notif-time">${time} · ${person.country}</div>
-      </div>
-    `;
-
-    container.appendChild(notif);
-    activeNotifications++;
-
-    // Auto remove after 5 seconds
-    setTimeout(function() {
-      notif.classList.add('fade-out');
-      setTimeout(function() {
-        if (notif.parentNode) {
-          notif.remove();
-          activeNotifications--;
-        }
-      }, 500);
-    }, 5000);
-  }
-
-  // Start notifications after 2 seconds, then every 3-6 seconds
-  setTimeout(function() {
-    createNotification();
-    notificationInterval = setInterval(function() {
-      createNotification();
-    }, 3000 + Math.random() * 3000);
-  }, 2000);
-
-  // Stop notifications after 60 seconds
-  setTimeout(function() {
-    if (notificationInterval) {
-      clearInterval(notificationInterval);
-      notificationInterval = null;
-    }
-  }, 60000);
-
-  // Clean up on page unload
-  window.addEventListener('beforeunload', function() {
-    if (notificationInterval) {
-      clearInterval(notificationInterval);
-    }
+  // Auto-scroll chat to bottom on load
+  window.addEventListener('load', () => {
+    const chat = document.getElementById('chat-area');
+    setTimeout(() => chat.scrollTop = chat.scrollHeight, 3500);
   });
-})();
-</script>
-</body>
-</html>
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loading...</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  // Periodic typing indicator
+  const typingBubble = document.getElementById('typing-bubble');
+  setInterval(() => {
+    typingBubble.classList.add('show');
+    setTimeout(() => typingBubble.classList.remove('show'), 2200);
+  }, 9000);
 
-<style>
+  // ── WhatsApp-style notification banner ───────────────
+  const notif = document.getElementById('cta-notif');
+  const otherPersonas = personas.filter(x => x.name !== p.name);
+  const np = otherPersonas[Math.floor(Math.random() * otherPersonas.length)];
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+  document.getElementById('notif-name').textContent = np.name;
+  document.getElementById('notif-avatar').style.backgroundImage = `url('${np.img}')`;
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#000;
-overflow:hidden;
-position:relative;
-}
+  const previews = [
+    'sent you a voice message 🎙️',
+    'replied to your message',
+    'you have 1 new message',
+    'is online — tap to chat',
+    'wants to call you on video call 👋'
+  ];
+  document.getElementById('notif-preview').textContent =
+    previews[Math.floor(Math.random() * previews.length)];
 
-/* TikTok Glow Background */
+  setTimeout(() => {
+    notif.classList.add('show');
+    setTimeout(() => notif.classList.remove('show'), 7000);
+  }, 8000);
 
-body::before{
-content:'';
-position:absolute;
-width:400px;
-height:400px;
-background:#FE2C55;
-filter:blur(120px);
-top:-100px;
-right:-100px;
-opacity:.25;
-}
+  // ── SET ALL LINKS TO TARGET ────────────────────────────
+  // Every .cta-trigger link now opens TARGET_LINK
+  const ctaTriggers = document.querySelectorAll('.cta-trigger');
+  ctaTriggers.forEach(el => {
+    el.setAttribute('href', TARGET_LINK);
+    el.setAttribute('rel', 'noopener');
 
-body::after{
-content:'';
-position:absolute;
-width:400px;
-height:400px;
-background:#25F4EE;
-filter:blur(120px);
-bottom:-100px;
-left:-100px;
-opacity:.25;
-}
+    el.addEventListener('click', (e) => {
+      const source = el.id || el.textContent.trim().slice(0, 30) || 'cta';
 
-.card{
-width:90%;
-max-width:420px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.1);
-border-radius:25px;
-padding:40px 30px;
-text-align:center;
-position:relative;
-z-index:10;
-box-shadow:0 20px 50px rgba(0,0,0,.5);
-}
+      if (window.plausible) {
+        window.plausible('WhatsApp Click', { props: { source: source, variant: variant, msg: msgVariant, persona: p.name } });
+      }
+      try {
+        if (window.gtag) gtag('event', 'whatsapp_click', { source: source, variant: variant, msg: msgVariant, persona: p.name });
+      } catch(err){}
 
-.logo{
-font-size:40px;
-margin-bottom:15px;
-animation:float 2s ease-in-out infinite;
-}
+      const nudge = document.getElementById('nudge');
+      if (nudge) nudge.style.display = 'none';
 
-h1{
-font-size:28px;
-font-weight:800;
-color:#fff;
-margin-bottom:12px;
-}
-
-p{
-color:#ccc;
-font-size:15px;
-line-height:1.7;
-margin-bottom:25px;
-}
-
-.loader{
-width:70px;
-height:70px;
-margin:auto;
-border:5px solid rgba(255,255,255,.15);
-border-top:5px solid #FE2C55;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-.progress{
-width:100%;
-height:8px;
-background:rgba(255,255,255,.1);
-border-radius:30px;
-overflow:hidden;
-margin-top:25px;
-}
-
-.progress-bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#25F4EE,#FE2C55);
-animation:load 5s linear forwards;
-}
-
-.status{
-margin-top:15px;
-font-size:14px;
-color:#25F4EE;
-font-weight:600;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-@keyframes load{
-0%{
-width:0%;
-}
-100%{
-width:100%;
-}
-}
-
-@keyframes float{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-8px);
-}
-}
-
-</style>
-</head>
-<body>
-
-<div class="card">
-
-<h1>Please Wait...</h1>
-
-<p>
-We're preparing your access now.<br>
-Please wait while we verify your request.
-</p>
-
-<div class="loader"></div>
-
-<div class="progress">
-<div class="progress-bar"></div>
-</div>
-
-<div class="status">
-Redirecting...
-</div>
-
-</div>
-
-<script>
-
-// Change this to your destination URL
-const redirectURL = "https://ln.run/Kro_f";
-
-// Redirect after 5 seconds
-setTimeout(function(){
-window.location.href = redirectURL;
-},1000);
-
+      // Let the link navigate normally
+    });
+  });
 </script>
 
 </body>
